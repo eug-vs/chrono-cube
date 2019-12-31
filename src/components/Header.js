@@ -7,17 +7,24 @@ import {
 } from "@material-ui/core";
 import styled from 'styled-components';
 
-const Header = () => (
+const Header = ({ setPage }) => {
+
+  const handleChange = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  return (
   <AppBar position="static">
-    <TabsWrapper>
+    <TabsWrapper onChange={handleChange}>
       <Typography variant="h4" id="logo"> ChronoCube </Typography>
-      <Tab label="Home" />
-      <Tab label="App" />
-      <Tab label="Scoreboard" />
-      <Tab label="News" />
+      <Tab label="Home" value="home"/>
+      <Tab label="App" value="app"/>
+      <Tab label="Scoreboard" value="scoreboard"/>
+      <Tab label="News" value="news"/>
     </TabsWrapper>
   </AppBar>
-);
+  );
+};
 
 const TabsWrapper = styled(Tabs)`
   border-bottom: 1px solid black;

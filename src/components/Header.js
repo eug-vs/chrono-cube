@@ -1,23 +1,26 @@
 import React from "react";
-import { Tab, Tabs, Typography } from "@material-ui/core";
+import {
+  AppBar,
+  Tabs,
+  Tab,
+  Typography
+} from "@material-ui/core";
 import styled from 'styled-components';
 
 const Header = () => (
-  <HeaderWrapper>
-    <Tabs>
+  <AppBar position="static">
+    <TabsWrapper>
       <Typography variant="h4" id="logo"> ChronoCube </Typography>
       <Tab label="Home" />
       <Tab label="App" />
       <Tab label="Scoreboard" />
       <Tab label="News" />
-    </Tabs>
-  </HeaderWrapper>
-
+    </TabsWrapper>
+  </AppBar>
 );
 
-const HeaderWrapper = styled.div`
+const TabsWrapper = styled(Tabs)`
   border-bottom: 1px solid black;
-  background-color: darkgrey;
   & .MuiTab-wrapper {
     padding: 10px;
   }

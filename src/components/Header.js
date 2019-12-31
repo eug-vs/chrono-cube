@@ -2,7 +2,7 @@ import React from "react";
 
 const Header = () => (
   <div>
-    <h2> ChronoCube </h2>
+    <span> ChronoCube </span>
     <ul>
       <li> Home </li>
       <li> App </li>

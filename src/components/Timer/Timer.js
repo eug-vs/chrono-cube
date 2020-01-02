@@ -5,16 +5,16 @@ import styled from 'styled-components';
 const Timer = () => {
     const SPACE = 32
     const [time, setTime] = useState("00:00:00")
-    const [stopwatchStarted, setStopwatchStarted] = useState(false);
+    const [running, setRunning] = useState(false);
     const [timer, setTimer] = useState(0);
     let startingTime;
 
     
-    const handleKeyPress = event => {
+    const handleKeyUp = event => {
         if (event.keyCode === SPACE){
-            if (!stopwatchStarted) {
+            if (!running) {
                 startingTime = Date.now();
-                setStopwatchStarted(true);
+                setRunning(true);
                 setTimer(setInterval(() => setTime(() => {
                     const timeGap = Math.floor((Date.now() - startingTime) / 10);
                     let resultTime = "";
@@ -36,8 +36,9 @@ const Timer = () => {
                 }), 10))
             } else {
                 clearInterval(timer)
-                setStopwatchStarted(false);
+                setRunning(false);
                 startingTime = 0;
+                console.log(time)
                 return false;
             }
         }
@@ -45,10 +46,10 @@ const Timer = () => {
 
 
     useEffect(() => {
-        window.addEventListener("keypress", handleKeyPress);
+        window.addEventListener("keyup", handleKeyUp);
 
         return () => {
-            window.removeEventListener("keypress", handleKeyPress);
+            window.removeEventListener("keyup", handleKeyUp);
         };
     })
 

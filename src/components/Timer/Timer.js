@@ -2,59 +2,56 @@ import React, { useState, useEffect } from 'react';
 
 import styled from 'styled-components';
 
-const Timer = () => {    
-    const [minute, setMinute] = useState(0);
-    const [second, setSecond] = useState(0);
-    const [mill, setMill] = useState(0);
+const Timer = () => {
+    const SPACE = 32
     const [time, setTime] = useState("00:00:00")
-    const [stopwatchStart, setStopwatchStart] = useState(false);
-    const [stopwatchTime, setStopwatchTime] = useState(0);
+    const [stopwatchStarted, setStopwatchStarted] = useState(false);
+    const [timer, setTimer] = useState(0);
+    let startingTime;
+
     
-    const handleKeyDown = event => {
-        if (event.keyCode === 32){
+    const handleKeyPress = event => {
+        if (event.keyCode === SPACE){
+            if (!stopwatchStarted) {
+                startingTime = Date.now();
+                setStopwatchStarted(true);
+                setTimer(setInterval(() => setTime(() => {
+                    const timeGap = Math.floor((Date.now() - startingTime) / 10);
+                    let resultTime = "";
 
-            if (!stopwatchStart) {
-                setStopwatchTime(Date.now());
-                setStopwatchStart(true);
+                    const minute = Math.floor(timeGap / 6000);
+                    if (minute < 10) resultTime += '0';
+                    resultTime += minute + ':';
+
+                    let second = Math.floor(timeGap / 100);
+                    if (second < 10) resultTime += '0';
+                    if (second > 59) second %= 60
+                    resultTime += second + ':';
+
+                    const mill = timeGap % 100;
+                    if (mill < 10) resultTime += '0';
+                    resultTime += mill;
+
+                    return resultTime;
+                }), 10))
+            } else {
+                clearInterval(timer)
+                setStopwatchStarted(false);
+                startingTime = 0;
+                return false;
             }
-
-            const timeGap = Date.now() - stopwatchTime;
-            setMill(Math.floor((timeGap % 1000) / 10));
-            setSecond(Math.floor(timeGap / 1000));
-            setMinute(Math.floor(timeGap / 60000));
-            setTime(() => {
-                let resultTime = "";
-                if (minute < 10) resultTime += '0';
-                resultTime += minute + ':';
-                if (second < 10) resultTime += '0';
-                resultTime += second + ':';
-                if (mill < 10) resultTime += '0';
-                resultTime += mill;
-                return resultTime;
-            });
         }
     }
 
-    const handleKeyUp = event => {
-        if (event.keyCode === 32) {
-            setTime("00:00:00");
-            setMill(0);
-            setSecond(0);
-            setMinute(0);
-            setStopwatchStart(false);
-            setStopwatchTime(0);
-        }
-    }
 
     useEffect(() => {
-        window.addEventListener("keydown", handleKeyDown);
-        window.addEventListener("keyup", handleKeyUp);
+        window.addEventListener("keypress", handleKeyPress);
 
         return () => {
-            window.removeEventListener("keydown", handleKeyDown);
-            window.removeEventListener("keyup", handleKeyUp);
+            window.removeEventListener("keypress", handleKeyPress);
         };
     })
+
 
     return (
         <Root>

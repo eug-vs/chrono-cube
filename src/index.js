@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import CssBaseline from '@material-ui/core/CssBaseline'
 
 import Header from './components/Header/Header';
+import Timer from './components/Timer/Timer';
 
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
         This text is rendered outside of <code>Header</code> component, but
         interacting with <code>Header</code> can influence content of this page!
       </p>
+      <Timer />
     </Root>
   );
 };

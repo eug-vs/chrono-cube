@@ -35,17 +35,18 @@ const App = () => {
     }
   };
 
-  const classes = useStyles();
   return (
-    <ThemeProvider theme={theme}>
+    <Root>
       <CssBaseline/>
-      <Header setPage={setPage}/>
-      <Box className={classes.root}>
-        <Typography variant="h4"> This is the {page} page! </Typography>
-        { getPageComponent(page)}
-      </Box>
-    </ThemeProvider>
-  );
+      <Header setPage={setPage} />
+      <Container maxWidth="xl">
+        <Paper elevation={4} style={{backgroundColor: "bisque"}}>
+          <Typography variant="h4"> This is the {page} page! </Typography>
+          { getPageComponent(page) }
+        </Paper>
+      </Container>
+    </Root>
+);
 };
 const Root = styled.div`
   background: cornsilk;

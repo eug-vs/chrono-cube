@@ -17,8 +17,8 @@ const Header = ({ setPage }) => {
   <AppBar position="static">
     <TabsWrapper onChange={handleChange}>
       <Typography variant="h4" id="logo"> ChronoCube </Typography>
-      <Tab label="Home" value="home"/>
       <Tab label="App" value="app"/>
+      <Tab label="Profile" value="profile"/>
       <Tab label="Scoreboard" value="scoreboard"/>
       <Tab label="News" value="news"/>
     </TabsWrapper>

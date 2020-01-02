@@ -4,12 +4,12 @@ import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import CssBaseline from '@material-ui/core/CssBaseline'
 
-import Header from "./components/Header";
+import Header from './components/Header/Header';
 
 
 const App = () => {
 
-  const [page, setPage] = useState('home');
+  const [page, setPage] = useState('app');
 
   return (
     <Root>

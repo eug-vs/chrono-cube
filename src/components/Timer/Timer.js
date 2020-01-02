@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import styled from 'styled-components';
+import {post} from '../../requests';
 
 const Timer = () => {
     const SPACE = 32
@@ -35,10 +36,10 @@ const Timer = () => {
                     return resultTime;
                 }), 10))
             } else {
-                clearInterval(timer)
+                clearInterval(timer);
                 setRunning(false);
                 startingTime = 0;
-                console.log(time)
+                post('solutions/', {result: time});
                 return false;
             }
         }

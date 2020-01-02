@@ -10,6 +10,7 @@ import { ThemeProvider, makeStyles } from '@material-ui/core/styles';
 
 import theme from "./theme";
 import Header from './components/Header/Header';
+import Timer from './components/Timer/Timer';
 import Scoreboard from "./components/Scoreboard/Scoreboard";
 
 
@@ -25,23 +26,30 @@ const App = () => {
   const [page, setPage] = useState('app');
 
   const classes = useStyles();
+
+  const getPageComponent = page => {
+    switch (page) {
+      case 'app':
+        return (<Timer/>);
+      case 'scoreboard':
+        return (<Scoreboard/>);
+      default:
+        return (
+          <p>
+            This text is rendered outside of <code>Header</code> component, but
+            interacting with <code>Header</code> can influence content of this page!
+          </p>
+        )
+    }
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline/>
       <Header setPage={setPage}/>
       <Box className={classes.root}>
         <Typography variant="h4"> This is the {page} page! </Typography>
-        {
-          (page === 'scoreboard')?
-          (<Scoreboard/>)
-          :
-          (
-            <p>
-              This text is rendered outside of <code>Header</code> component, but
-              interacting with <code>Header</code> can influence content of this page!
-            </p>
-          )
-        }
+        { getPageComponent(page) }
       </Box>
     </ThemeProvider>
   );

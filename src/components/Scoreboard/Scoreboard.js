@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
+import { Container } from "@material-ui/core";
 
 import { get } from "../../requests";
 import Solution from "./Solution";
@@ -19,9 +20,9 @@ const Scoreboard = () => {
 
 
   return (
-    <div>
-      { solutions.map(solution => <Solution solution={solution}/>) }
-    </div>
+    <Container maxWidth="sm">
+      {solutions.map(solution => (<Solution solution={solution}/>))}
+    </Container>
   );
 };
 

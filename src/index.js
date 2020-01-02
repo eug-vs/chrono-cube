@@ -11,6 +11,7 @@ import styled from 'styled-components';
 import CssBaseline from '@material-ui/core/CssBaseline'
 
 import Header from './components/Header/Header';
+import Timer from './components/Timer/Timer';
 import Scoreboard from "./components/Scoreboard/Scoreboard";
 
 
@@ -18,30 +19,34 @@ const App = () => {
 
   const [page, setPage] = useState('app');
 
+  const getPageComponent = page => {
+    switch (page) {
+      case 'app':
+        return (<Timer/>);
+      case 'scoreboard':
+        return (<Scoreboard/>);
+      default:
+        return (
+          <p>
+            This text is rendered outside of <code>Header</code> component, but
+            interacting with <code>Header</code> can influence content of this page!
+          </p>
+        )
+    }
+  };
+
+  const classes = useStyles();
   return (
-    <Root>
+    <ThemeProvider theme={theme}>
       <CssBaseline/>
-      <Header setPage={setPage} />
-      <Container maxWidth="xl">
-        <Paper elevation={4} style={{backgroundColor: "bisque"}}>
-          <Typography variant="h4"> This is the {page} page! </Typography>
-          {
-            (page === 'scoreboard')?
-              (<Scoreboard/>)
-              :
-              (
-                <p>
-                  This text is rendered outside of <code>Header</code> component, but
-                  interacting with <code>Header</code> can influence content of this page!
-                </p>
-              )
-          }
-        </Paper>
-      </Container>
-    </Root>
+      <Header setPage={setPage}/>
+      <Box className={classes.root}>
+        <Typography variant="h4"> This is the {page} page! </Typography>
+        { getPageComponent(page)}
+      </Box>
+    </ThemeProvider>
   );
 };
-
 const Root = styled.div`
   background: cornsilk;
   padding-bottom: 25px;

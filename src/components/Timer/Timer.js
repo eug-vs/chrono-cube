@@ -1,17 +1,62 @@
 import React, { useState, useEffect } from 'react';
 
 import styled from 'styled-components';
-import {post} from '../../requests';
+import { post } from '../../requests';
 
 const Timer = () => {
-    const SPACE = 32
-    const [time, setTime] = useState("00:00:00")
+    const SPACE = 32;
+    const countdownInMills = 15000;
+    const [time, setTime] = useState("00:15:00");
     const [running, setRunning] = useState(false);
     const [timer, setTimer] = useState(0);
+    const [countdown, setCountdown] = useState(0);
+    const [countdownRunning, setCountdownRunning] = useState(false);
     let startingTime;
+
+
+    const handleKeyDown = event => {
+        if (event.keyCode === SPACE && !running ) {
+
+            let timeGap =  Date.now() - countdown;
+            if (!countdownRunning) {
+                setCountdown(Date.now());
+                setCountdownRunning(true);
+                timeGap = 0;
+            }
+
+            if (timeGap >= countdownInMills) {
+                setRunning(true);
+                setTime('00:00:00');
+                return;
+            }
+
+            setTime(() => {
+                const timeLeft = Math.floor((countdownInMills - timeGap) / 10);
+                let resultTime = "";
+
+                const minute = Math.floor(timeLeft / 6000);
+                if (minute < 10) resultTime += '0';
+                resultTime += minute + ':';
+
+                let second = Math.floor(timeLeft / 100);
+                if (second < 10) resultTime += '0';
+                if (second > 59) second %= 60;
+                resultTime += second + ':';
+
+                const mill = timeLeft % 100;
+                if (mill < 10) resultTime += '0';
+                resultTime += mill;
+
+                return resultTime;
+            })
+
+            
+        }
+    }
 
     
     const handleKeyUp = event => {
+        setCountdownRunning(false);
         if (event.keyCode === SPACE){
             if (!running) {
                 startingTime = Date.now();
@@ -48,9 +93,12 @@ const Timer = () => {
 
     useEffect(() => {
         window.addEventListener("keyup", handleKeyUp);
+        window.addEventListener("keydown", handleKeyDown);
 
         return () => {
             window.removeEventListener("keyup", handleKeyUp);
+            window.removeEventListener("keydown", handleKeyDown);
+
         };
     })
 

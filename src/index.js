@@ -48,7 +48,6 @@ const App = () => {
       <CssBaseline/>
       <Header setPage={setPage}/>
       <Box className={classes.root}>
-        <Typography variant="h4"> This is the {page} page! </Typography>
         { getPageComponent(page) }
       </Box>
     </ThemeProvider>

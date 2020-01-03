@@ -1,5 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 
+import { Container, Typography } from "@material-ui/core";
 
 import { get } from "../../requests";
 import Solution from "./Solution";
@@ -19,9 +20,10 @@ const Scoreboard = () => {
 
 
   return (
-    <div>
-      { solutions.map(solution => <Solution solution={solution}/>) }
-    </div>
+    <Container maxWidth="sm">
+      <Typography variant="h3" style={{textAlign: 'center'}}>Scoreboard</Typography>
+      {solutions.map(solution => (<Solution solution={solution}/>))}
+    </Container>
   );
 };
 

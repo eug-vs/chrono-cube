@@ -3,21 +3,29 @@ import ReactDOM from 'react-dom';
 
 import {
   Typography,
-  Paper,
-  Container,
+  Box,
 } from "@material-ui/core";
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { ThemeProvider, makeStyles } from '@material-ui/core/styles';
 
-import styled from 'styled-components';
-import CssBaseline from '@material-ui/core/CssBaseline'
-
+import theme from "./theme";
 import Header from './components/Header/Header';
 import Timer from './components/Timer/Timer';
 import Scoreboard from "./components/Scoreboard/Scoreboard";
 
 
+const useStyles = makeStyles(theme => ({
+  root: {
+    padding: theme.spacing(2),
+  },
+}));
+
+
 const App = () => {
 
   const [page, setPage] = useState('app');
+
+  const classes = useStyles();
 
   const getPageComponent = page => {
     switch (page) {
@@ -36,22 +44,14 @@ const App = () => {
   };
 
   return (
-    <Root>
+    <ThemeProvider theme={theme}>
       <CssBaseline/>
-      <Header setPage={setPage} />
-      <Container maxWidth="xl">
-        <Paper elevation={4} style={{backgroundColor: "bisque"}}>
-          <Typography variant="h4"> This is the {page} page! </Typography>
-          { getPageComponent(page) }
-        </Paper>
-      </Container>
-    </Root>
-);
+      <Header setPage={setPage}/>
+      <Box className={classes.root}>
+        { getPageComponent(page) }
+      </Box>
+    </ThemeProvider>
+  );
 };
-const Root = styled.div`
-  background: cornsilk;
-  padding-bottom: 25px;
-`;
-
 
 ReactDOM.render(<App />, document.getElementById('root'));

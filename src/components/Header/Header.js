@@ -5,38 +5,38 @@ import {
   Tab,
   Typography
 } from "@material-ui/core";
-import styled from 'styled-components';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(theme => ({
+  header: {
+    backgroundColor: theme.palette.primary.dark,
+  },
+  logo: {
+    color: theme.palette.orange.main,
+    margin: theme.spacing(2, 3, 2, 2)
+  },
+}));
+
 
 const Header = ({ setPage }) => {
+  const classes = useStyles();
 
   const handleChange = (event, newPage) => {
     setPage(newPage);
   };
 
+  const menuItems = ['app', 'profile', 'scoreboard', 'news'];
+
   return (
-  <AppBar position="static">
-    <TabsWrapper onChange={handleChange}>
-      <Typography variant="h4" id="logo"> ChronoCube </Typography>
-      <Tab label="App" value="app"/>
-      <Tab label="Profile" value="profile"/>
-      <Tab label="Scoreboard" value="scoreboard"/>
-      <Tab label="News" value="news"/>
-    </TabsWrapper>
+  <AppBar position="sticky" className={classes.header}>
+    <Tabs onChange={handleChange}>
+      <Typography variant="h4" className={classes.logo}> ChronoCube </Typography>
+      { menuItems.map(menuItem => (
+        <Tab label={menuItem} value={menuItem}/>
+      ))}
+    </Tabs>
   </AppBar>
   );
 };
-
-const TabsWrapper = styled(Tabs)`
-  border-bottom: 1px solid black;
-  & .MuiTab-wrapper {
-    padding: 10px;
-  }
-  & .MuiTypography-root {
-    font-weight: bold;
-    padding: 10px;
-    margin-right: 50px;
-    margin-left: 30px;
-  }
-`;
 
 export default Header;

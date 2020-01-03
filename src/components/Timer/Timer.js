@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 
-import styled from 'styled-components';
 import { post } from '../../requests';
+
+import { Typography } from '@material-ui/core';
 
 const Timer = () => {
   const SPACE = 32;
   const maxCountdown = 15000;
-  const [time, setTime] = useState("00:15:00");
+  const [time, setTime] = useState('00:15:00');
   const [isRunning, setIsRunning] = useState(false);
   const [timer, setTimer] = useState(0);
   const [isCountdown, setIsCountdown] = useState(false);
   let startingTime;
-
 
   const handleKeyPress = event => {
     if (event.keyCode === SPACE && !isRunning ) {
@@ -51,33 +51,24 @@ const Timer = () => {
   };
 
   useEffect(() => {
-    window.addEventListener("keyup", handleKeyUp);
-    window.addEventListener("keypress", handleKeyPress);
+    window.addEventListener('keyup', handleKeyUp);
+    window.addEventListener('keypress', handleKeyPress);
 
     return () => {
-      window.removeEventListener("keyup", handleKeyUp);
-      window.removeEventListener("keypress", handleKeyPress);
-
+      window.removeEventListener('keyup', handleKeyUp);
+      window.removeEventListener('keypress', handleKeyPress);
     };
   });
 
   return (
-    <Root>
-      <span>{time}</ span>
-    </Root>
+    <Typography variant="h2"> {time} </Typography>
   );
 };
 
-const Root = styled.div`
-  background-color: skyblue;
-  padding: 8px;
-  display: inline-block;
-  font-size: 32px;
-  color: pink;
-`;
+
 
 const convertTimeToString = timeDiff => {
-  let resultTime = "";
+  let resultTime = '';
 
   const minute = Math.floor(timeDiff / 60000);
   if (minute < 10) resultTime += '0';
@@ -96,3 +87,4 @@ const convertTimeToString = timeDiff => {
 };
 
 export default Timer;
+

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-import styled from 'styled-components';
+import { Typography } from "@material-ui/core";
+
 import {post} from '../../requests';
 
 const Timer = () => {
@@ -56,19 +57,10 @@ const Timer = () => {
 
 
     return (
-        <Root>
-            <span>{time}</ span>
-        </Root>
+      <Typography variant="h2"> {time} </Typography>
     );
 
 }
 
-const Root = styled.div`
-    background-color: skyblue;
-    padding: 8px;
-    display: inline-block;
-    font-size: 32px;
-    color: pink;
-`;
 
 export default Timer;

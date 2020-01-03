@@ -5,72 +5,67 @@ import { post } from '../../requests';
 
 const Timer = () => {
     const SPACE = 32;
-    const countdownInMills = 15000;
+    const maxCountdown = 15000;
     const [time, setTime] = useState("00:15:00");
-    const [running, setRunning] = useState(false);
+    const [isRunning, setIsRunning] = useState(false);
     const [timer, setTimer] = useState(0);
-    const [countdown, setCountdown] = useState(0);
-    const [countdownRunning, setCountdownRunning] = useState(false);
+    const [isCountdown, setIsCountdown] = useState(false);
     let startingTime;
 
 
-    const handleKeyDown = event => {
-        if (event.keyCode === SPACE && !running ) {
-
-            let timeGap =  Date.now() - countdown;
-            if (!countdownRunning) {
-                setCountdown(Date.now());
-                setCountdownRunning(true);
-                timeGap = 0;
-            }
-
-            if (timeGap >= countdownInMills) {
-                setRunning(true);
-                setTime('00:00:00');
-                return;
-            }
-
-            setTime(displayTime(countdownInMills - timeGap));
-        }
-    }
-
-    
-    const handleKeyUp = event => {
-        setCountdownRunning(false);
-        if (event.keyCode === SPACE){
-            if (!running) {
+    const handleKeyPress = event => {
+        if (event.keyCode === SPACE && !isRunning ) {
+          	if (!isCountdown) {
                 startingTime = Date.now();
-                setRunning(true);
-                setTimer(setInterval(() => setTime(displayTime((Date.now() - startingTime))), 10));
+                setIsCountdown(true);
+                setTimer(setInterval(() => setTime(() => {
+                    const timeDiff = maxCountdown - (Date.now() - startingTime);
+                    if (timeDiff < 0) {
+                        setIsRunning(true);
+                        setTime('00:00:00');
+                        clearInterval(timer);
+                    }
+                    return convertTimeToString(timeDiff);
+                }), 10));
+            }
+        }
+    };
+
+    const handleKeyUp = event => {
+        clearInterval(timer);
+        if (event.keyCode === SPACE){
+            if (!isRunning) {
+                startingTime = Date.now();
+                setIsRunning(true);
+                setTimer(setInterval(() => setTime(convertTimeToString((Date.now() - startingTime))), 10));
             } else {
+
                 clearInterval(timer);
-                setRunning(false);
+                setIsRunning(false);
+                setIsCountdown(false);
                 startingTime = 0;
                 post('solutions/', {result: time});
                 return false;
             }
         }
-    }
-
+    };
 
     useEffect(() => {
         window.addEventListener("keyup", handleKeyUp);
-        window.addEventListener("keydown", handleKeyDown);
+        window.addEventListener("keypress", handleKeyPress);
 
         return () => {
             window.removeEventListener("keyup", handleKeyUp);
-            window.removeEventListener("keydown", handleKeyDown);
+            window.removeEventListener("keypress", handleKeyPress);
 
         };
-    })
-
+    });
 
     return (
         <Root>
             <span>{time}</ span>
         </Root>
     );
-
 }
 
 const Root = styled.div`
@@ -81,20 +76,19 @@ const Root = styled.div`
     color: pink;
 `;
 
-const displayTime = timeDiff => {
-    const timeGap = Math.floor(timeDiff / 10);
+const convertTimeToString = timeDiff => {
     let resultTime = "";
 
-    const minute = Math.floor(timeGap / 6000);
+    const minute = Math.floor(timeDiff / 60000);
     if (minute < 10) resultTime += '0';
     resultTime += minute + ':';
 
-    let second = Math.floor(timeGap / 100);
+    let second = Math.floor(timeDiff / 1000);
     if (second < 10) resultTime += '0';
     if (second > 59) second %= 60
     resultTime += second + ':';
 
-    const mill = timeGap % 100;
+    const mill = Math.floor((timeDiff % 1000) / 10);
     if (mill < 10) resultTime += '0';
     resultTime += mill;
 

@@ -8,11 +8,8 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
-  header: {
-    backgroundColor: theme.palette.primary.dark,
-  },
   logo: {
-    color: theme.palette.orange.main,
+    color: theme.palette.secondary.main,
     margin: theme.spacing(2, 3, 2, 2)
   },
 }));

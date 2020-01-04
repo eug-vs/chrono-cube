@@ -17,7 +17,6 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const useStyles = makeStyles(theme => ({
   item: {
-    backgroundColor: theme.palette.secondary.dark,
     margin: theme.spacing(3),
     width: theme.spacing(60),
 
@@ -28,7 +27,7 @@ const useStyles = makeStyles(theme => ({
     },
 
     '& .MuiTypography-h2': {
-      color: theme.palette.orange.main,
+      color: theme.palette.secondary.main,
       margin: theme.spacing(2),
     },
   },

@@ -1,12 +1,25 @@
 import React, { useEffect, useState } from 'react';
 
-import { Container, Typography } from "@material-ui/core";
+import {
+  Container,
+  Typography,
+  Grid,
+} from "@material-ui/core";
 
 import { get } from "../../requests";
 import SolutionCard from "../SolutionCard/SolutionCard";
+import { makeStyles } from "@material-ui/core/styles";
 
+
+const useStyles = makeStyles(theme => ({
+  pageHeader: {
+    textAlign: 'center',
+    margin: theme.spacing(2),
+  }
+}));
 
 const Scoreboard = () => {
+  const classes = useStyles();
   const [solutions, setSolutions] = useState([]);
 
   const updateSolutions = async () => {
@@ -18,11 +31,18 @@ const Scoreboard = () => {
     updateSolutions();
   }, []);
 
-
   return (
-    <Container maxWidth="sm">
-      <Typography variant="h3" style={{textAlign: 'center'}}>Scoreboard</Typography>
-      {solutions.map(solution => (<SolutionCard solution={solution}/>))}
+    <Container maxWidth="xs">
+      <Typography variant="h3" className={classes.pageHeader}>
+        Scoreboard
+      </Typography>
+      <Grid container justify="center" direction="column" spacing={3}>
+        {solutions.map(solution => (
+          <Grid item>
+            <SolutionCard solution={solution}/>
+          </Grid>
+        ))}
+      </Grid>
     </Container>
   );
 };

@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
-import {
-  Typography,
-  Box,
-} from "@material-ui/core";
+import { Box } from "@material-ui/core";
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider, makeStyles } from '@material-ui/core/styles';
 
@@ -46,7 +43,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline/>
-      <Header setPage={setPage}/>
+      <Header page={page} setPage={setPage}/>
       <Box className={classes.root}>
         { getPageComponent(page) }
       </Box>

@@ -1,40 +1,23 @@
 import { createMuiTheme } from '@material-ui/core/styles'
-import createPalette from "@material-ui/core/styles/createPalette";
-
-const colorScheme = {
-  dark: '#232020',
-  grey: '#3a3535',
-  white: '#f4f4f4',
-  orange: '#ff7315',
-};
-
-const palette = createPalette({
-  primary: {
-    main: colorScheme.dark,
-  },
-  secondary: {
-    main: colorScheme.grey,
-  },
-  white: {
-    main: colorScheme.white,
-  },
-  orange: {
-    main: colorScheme.orange,
-  },
-});
-
-palette.background = {
-  default: palette.secondary.main,
-  paper: palette.secondary.dark,
-};
-
-palette.text = {
-  primary: palette.white.main,
-  secondary: palette.orange.main,
-};
 
 const theme = createMuiTheme({
-  palette
+  palette: {
+    type: 'dark',
+    primary: {
+      main: '#0a0909',
+    },
+    secondary: {
+      main: '#ff7315',
+    },
+    background: {
+      default: '#232020',
+      paper: '#0f0e0e',
+    },
+    text: {
+      primary: '#f4f4f4',
+      secondary: '#6f6666',
+    }
+  },
 });
 
 export default theme;

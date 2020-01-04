@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-const Header = ({ setPage }) => {
+const Header = ({ page, setPage }) => {
   const classes = useStyles();
 
   const handleChange = (event, newPage) => {
@@ -29,7 +29,7 @@ const Header = ({ setPage }) => {
 
   return (
   <AppBar position="sticky" className={classes.header}>
-    <Tabs onChange={handleChange}>
+    <Tabs onChange={handleChange} value={page}>
       <Typography variant="h4" className={classes.logo}> ChronoCube </Typography>
       { menuItems.map(menuItem => (
         <Tab label={menuItem} value={menuItem}/>

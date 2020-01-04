@@ -3,30 +3,28 @@ import React from 'react';
 import {
   Typography,
   Card,
-  Container,
-  Box,
-  ExpansionPanelSummary,
-  ExpansionPanel,
-  ExpansionPanelDetails,
+  CardHeader,
+  CardContent,
+  IconButton,
+  Avatar,
 } from "@material-ui/core";
 
 import { makeStyles } from "@material-ui/core/styles";
 import TimerIcon from '@material-ui/icons/Timer';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 
 const useStyles = makeStyles(theme => ({
-  item: {
-    margin: theme.spacing(3),
-    width: theme.spacing(60),
+  root: {
+    padding: theme.spacing(1),
 
-    '& .MuiBox-root': {
+    '& .MuiCardContent-root': {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
     },
 
-    '& .MuiTypography-h2': {
+    '& .MuiTypography-h3': {
       color: theme.palette.secondary.main,
       margin: theme.spacing(2),
     },
@@ -37,33 +35,31 @@ const useStyles = makeStyles(theme => ({
 const SolutionCard = ({ solution }) => {
   const classes = useStyles();
 
-  const author = solution.author? solution.author : 'anonymous';
+  const author = solution.author? solution.author.username : 'anonymous';
   return (
-    <Card elevation={4} className={classes.item}>
-      <Container maxWidth="xs">
-        <Box>
-          <TimerIcon/>
-          <Typography variant="h2">
-            { solution.result }
-          </Typography>
-        </Box>
-      </Container>
+    <Card elevation={5} className={classes.root}>
+      <CardHeader
+        avatar={
+          author === 'anonymous'?
+            (<Avatar/>)
+            :
+            (<Avatar>{author[0].toUpperCase()}</Avatar>)
+        }
+        title={author}
+        subheader="04.01.2020 13:20"
+        action={(
+          <IconButton>
+            <MoreVertIcon />
+          </IconButton>
+        )}
+      />
+      <CardContent>
+        <TimerIcon/>
+        <Typography variant="h3">
+          { solution.result }
+        </Typography>
+      </CardContent>
 
-      <ExpansionPanel>
-        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon style={{color: 'white'}}/>}>
-          <Typography variant="h6">
-            By {author}
-          </Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
-          </Typography>
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
     </Card>
   )
 };

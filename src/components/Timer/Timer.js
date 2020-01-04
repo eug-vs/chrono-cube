@@ -7,7 +7,7 @@ import { Typography } from '@material-ui/core';
 const Timer = () => {
   const SPACE = 32;
   const maxCountdown = 15000;
-  const [time, setTime] = useState('00:15:00');
+  const [time, setTime] = useState('00:00:00');
   const [isRunning, setIsRunning] = useState(false);
   const [timer, setTimer] = useState(0);
   const [isCountdown, setIsCountdown] = useState(false);
@@ -32,14 +32,14 @@ const Timer = () => {
   };
 
   const handleKeyUp = event => {
-    clearInterval(timer);
-    if (event.keyCode === SPACE){
+    if (event.keyCode === SPACE) {
+      clearInterval(timer);
       if (!isRunning) {
         startingTime = Date.now();
         setIsRunning(true);
         setTimer(setInterval(() => setTime(convertTimeToString((Date.now() - startingTime))), 10));
       } else {
-
+        
         clearInterval(timer);
         setIsRunning(false);
         setIsCountdown(false);

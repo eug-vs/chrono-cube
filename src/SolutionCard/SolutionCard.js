@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
 
 const SolutionCard = ({ data }) => {
   const classes = useStyles();
-  const author = data.author? data.author.toString() : 'anonymous';
+  const author = data.author? data.author.username.toString() : 'anonymous';
 
   return (
     <Card elevation={5} className={classes.item}>
@@ -42,7 +42,7 @@ const SolutionCard = ({ data }) => {
           author === 'anonymous'?
             (<Avatar/>)
             :
-            (<Avatar>{author[0]}</Avatar>)
+            (<Avatar>{author[0].toUpperCase()}</Avatar>)
         }
         title={author}
         subheader="04.01.2020 13:20"

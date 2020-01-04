@@ -7,6 +7,7 @@ import {
   CardContent,
   IconButton,
   Avatar,
+  Grid,
 } from "@material-ui/core";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -18,18 +19,11 @@ const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(1),
 
-    '& .MuiCardContent-root': {
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-
     '& .MuiTypography-h3': {
       color: theme.palette.secondary.main,
       margin: theme.spacing(2),
     },
   },
-
 }));
 
 const SolutionCard = ({ solution }) => {
@@ -54,12 +48,17 @@ const SolutionCard = ({ solution }) => {
         )}
       />
       <CardContent>
-        <TimerIcon/>
-        <Typography variant="h3">
-          { solution.result }
-        </Typography>
+        <Grid container direction="row" justify="center" alignItems="center">
+          <Grid item>
+            <TimerIcon/>
+          </Grid>
+          <Grid item>
+            <Typography variant="h3">
+              { solution.result }
+            </Typography>
+          </Grid>
+        </Grid>
       </CardContent>
-
     </Card>
   )
 };

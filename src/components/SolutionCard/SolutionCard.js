@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
-const Solution = ({ solution }) => {
+const SolutionCard = ({ solution }) => {
   const classes = useStyles();
 
   const author = solution.author? solution.author : 'anonymous';
@@ -68,4 +68,4 @@ const Solution = ({ solution }) => {
   )
 };
 
-export default Solution;
+export default SolutionCard;

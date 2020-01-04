@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Container, Typography } from "@material-ui/core";
 
 import { get } from "../../requests";
-import Solution from "./Solution";
+import SolutionCard from "../SolutionCard/SolutionCard";
 
 
 const Scoreboard = () => {
@@ -22,7 +22,7 @@ const Scoreboard = () => {
   return (
     <Container maxWidth="sm">
       <Typography variant="h3" style={{textAlign: 'center'}}>Scoreboard</Typography>
-      {solutions.map(solution => (<Solution solution={solution}/>))}
+      {solutions.map(solution => (<SolutionCard solution={solution}/>))}
     </Container>
   );
 };

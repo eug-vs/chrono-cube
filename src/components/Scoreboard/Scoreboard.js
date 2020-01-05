@@ -43,7 +43,7 @@ const Scoreboard = () => {
       <Grid container justify="center" direction="column" spacing={3}>
         {solutions.map(solution => (
           <Grid item>
-            <SolutionCard solution={solution} removeThisCard={removeSolution}/>
+            <SolutionCard data={solution} removeThisCard={removeSolution}/>
           </Grid>
         ))}
       </Grid>

@@ -19,6 +19,14 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { del } from "../../requests";
 
 
+const DATE_FORMAT = {
+  month: 'long',
+  day: 'numeric',
+  year: 'numeric',
+  hour: '2-digit',
+  minute: '2-digit',
+};
+
 const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(1),
@@ -30,11 +38,12 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const SolutionCard = ({ solution, removeThisCard }) => {
+const SolutionCard = ({ data, removeThisCard }) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
 
-  const author = solution.author? solution.author.username : 'anonymous';
+  const author = data.author? data.author.username : 'anonymous';
+  const date = new Date(data.date);
 
   const handleOpenMenu = event => {
     setAnchorEl(event.currentTarget);
@@ -45,9 +54,9 @@ const SolutionCard = ({ solution, removeThisCard }) => {
   };
 
   const handleDelete = () => {
-    del(`solutions/${solution.id}/`);
+    del(`solutions/${data.id}/`);
     handleClose();
-    removeThisCard(solution.id);
+    removeThisCard(data.id);
   };
 
   return (
@@ -60,7 +69,7 @@ const SolutionCard = ({ solution, removeThisCard }) => {
             (<Avatar>{author[0].toUpperCase()}</Avatar>)
         }
         title={author}
-        subheader="04.01.2020 13:20"
+        subheader={date.toLocaleString('default', DATE_FORMAT)}
         action={(
           <IconButton onClick={handleOpenMenu}>
             <MoreVertIcon />
@@ -82,7 +91,7 @@ const SolutionCard = ({ solution, removeThisCard }) => {
           </Grid>
           <Grid item>
             <Typography variant="h3">
-              { solution.result }
+              { data.result }
             </Typography>
           </Grid>
         </Grid>

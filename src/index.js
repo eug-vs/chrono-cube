@@ -22,6 +22,8 @@ const App = () => {
 
   const [page, setPage] = useState('app');
   const [recentSolutions, setRecentSolutions] = useState([]);
+  const [userId, setUserId] = useState(0);
+  const [isUserSolutionsUpdated, setIsUserSolutionsUpdated] = useState(false);
 
   const classes = useStyles();
 
@@ -35,7 +37,13 @@ const App = () => {
           />
         );
       case 'scoreboard':
-        return (<Scoreboard/>);
+        return (<Scoreboard />);
+      case 'profile':
+        return (<Profile 
+                    update={isUserSolutionsUpdated} 
+                    setUpdate={setIsUserSolutionsUpdated} 
+                    userId={userId} 
+                    setUserId={setUserId} />)
       default:
         return (
           <p>

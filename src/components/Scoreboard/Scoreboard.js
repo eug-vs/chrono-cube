@@ -25,7 +25,7 @@ const Scoreboard = () => {
   const [solutions, setSolutions] = useState([]);
 
   const updateSolutions = () => {
-    get('solutions/').then(response => {
+    get('scoreboard/').then(response => {
       setTimeout(() => {
         setSolutions(response.data);
       }, 300);

@@ -7,10 +7,10 @@ import {
 } from "@material-ui/core";
 
 import { makeStyles } from "@material-ui/core/styles";
-import LinearProgress from '@material-ui/core/LinearProgress';
 
 import { get } from "../../requests";
 import SolutionCard from "../SolutionCard/SolutionCard";
+import Loading from "../Loading/Loading";
 
 
 const useStyles = makeStyles(theme => ({
@@ -28,7 +28,7 @@ const Scoreboard = () => {
     get('solutions/').then(response => {
       setTimeout(() => {
         setSolutions(response.data);
-      }, 250);
+      }, 300);
     });
   };
 
@@ -45,7 +45,7 @@ const Scoreboard = () => {
       <Typography variant="h3" className={classes.pageHeader}>
         Scoreboard
       </Typography>
-      {(solutions.length === 0) && <LinearProgress color="secondary" />}
+      {(solutions.length === 0) && <Loading />}
       <Grid container justify="center" direction="column" spacing={3}>
         {solutions.map(solution => (
           <Grid item key={solution.id}>

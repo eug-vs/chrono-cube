@@ -47,7 +47,7 @@ const Scoreboard = () => {
       </Typography>
       {(solutions.length === 0) && <Loading />}
       <Grid container justify="center" direction="column" spacing={3}>
-        {solutions.map(solution => (
+        {solutions.slice(0, 30).map(solution => (
           <Grid item key={solution.id}>
             <SolutionCard data={solution} removeThisCard={removeSolution}/>
           </Grid>

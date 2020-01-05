@@ -3,14 +3,18 @@ import {
   AppBar,
   Tabs,
   Tab,
-  Typography
+  Typography,
+  Toolbar,
 } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   logo: {
     color: theme.palette.secondary.main,
-    margin: theme.spacing(2, 3, 2, 2)
+    margin: theme.spacing(0, 2, 0, 3)
+  },
+  tab: {
+    padding: theme.spacing(3, 0, 3, 0)
   },
 }));
 
@@ -26,12 +30,14 @@ const Header = ({ page, setPage }) => {
 
   return (
   <AppBar position="sticky" className={classes.header}>
-    <Tabs onChange={handleChange} value={page}>
+    <Toolbar>
       <Typography variant="h4" className={classes.logo}> ChronoCube </Typography>
-      { menuItems.map(menuItem => (
-        <Tab label={menuItem} value={menuItem}/>
-      ))}
-    </Tabs>
+      <Tabs onChange={handleChange} value={page}>
+        { menuItems.map(menuItem => (
+          <Tab label={menuItem} value={menuItem} key={menuItem} className={classes.tab}/>
+        ))}
+      </Tabs>
+    </Toolbar>
   </AppBar>
   );
 };

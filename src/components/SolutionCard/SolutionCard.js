@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
   Typography,
@@ -8,11 +8,15 @@ import {
   IconButton,
   Avatar,
   Grid,
+  Menu,
+  MenuItem,
 } from "@material-ui/core";
 
 import { makeStyles } from "@material-ui/core/styles";
 import TimerIcon from '@material-ui/icons/Timer';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+
+import { del } from "../../requests";
 
 
 const useStyles = makeStyles(theme => ({
@@ -26,10 +30,26 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const SolutionCard = ({ solution }) => {
+const SolutionCard = ({ solution, removeThisCard }) => {
   const classes = useStyles();
+  const [anchorEl, setAnchorEl] = useState(null);
 
   const author = solution.author? solution.author.username : 'anonymous';
+
+  const handleOpenMenu = event => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleDelete = () => {
+    del(`solutions/${solution.id}/`);
+    handleClose();
+    removeThisCard(solution.id);
+  };
+
   return (
     <Card elevation={5} className={classes.root}>
       <CardHeader
@@ -42,11 +62,19 @@ const SolutionCard = ({ solution }) => {
         title={author}
         subheader="04.01.2020 13:20"
         action={(
-          <IconButton>
+          <IconButton onClick={handleOpenMenu}>
             <MoreVertIcon />
           </IconButton>
         )}
       />
+      <Menu
+        anchorEl={anchorEl}
+        open={Boolean(anchorEl)}
+        keepMounted
+        onClose={handleClose}
+      >
+        <MenuItem onClick={handleDelete}>Delete</MenuItem>
+      </Menu>
       <CardContent>
         <Grid container direction="row" justify="center" alignItems="center">
           <Grid item>

@@ -27,6 +27,10 @@ const Scoreboard = () => {
     await setSolutions(response.data);
   };
 
+  const removeSolution = (id) => {
+    setSolutions(solutions.filter((solution => solution.id !== id)));
+  };
+
   useEffect(() => {
     updateSolutions();
   }, []);
@@ -39,7 +43,7 @@ const Scoreboard = () => {
       <Grid container justify="center" direction="column" spacing={3}>
         {solutions.map(solution => (
           <Grid item>
-            <SolutionCard solution={solution}/>
+            <SolutionCard solution={solution} removeThisCard={removeSolution}/>
           </Grid>
         ))}
       </Grid>

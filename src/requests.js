@@ -9,9 +9,16 @@ export const get = (url) => {
   );
 };
 
-export const post =  (url, data) => {
+export const post = (url, data) => {
   return axios.post(
     baseApiUrl + url,
     data
   );
+};
+
+export const del = (url, data) => {
+  return axios.delete(
+    baseApiUrl + url,
+    data
+  )
 };

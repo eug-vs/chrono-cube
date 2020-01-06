@@ -44,7 +44,6 @@ const Header = ({ page, setPage }) => {
       <Tabs onChange={handleChange} value={page}>
         { Object.keys(icons).map(item => (
           <Tab
-            className={classes.tab}
             label={item}
             icon={icons[item]}
             value={item}

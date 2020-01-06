@@ -8,6 +8,7 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'center',
     padding: theme.spacing(5),
     background: theme.palette.primary.main,
+    marginTop: theme.spacing(25),
   },
 }));
 
@@ -17,45 +18,43 @@ const Timer = ({ registerResult }) => {
   const SPACE = 32;
   const maxCountdown = 15000;
   const [time, setTime] = useState('00:00:00');
-  const [isRunning, setIsRunning] = useState(false);
-  const [timer, setTimer] = useState(0);
-  const [isCountdown, setIsCountdown] = useState(false);
-  let startingTime;
+  const [mode, setMode] = useState('idle');
+  const [repeater, setRepeater] = useState(0);
+
+  useEffect(()=> {
+    const timestamp = Date.now();
+
+    if (mode === 'countdown') setRepeater(setInterval(() => {
+      const timeDelta = maxCountdown - (Date.now() - timestamp);
+      if (timeDelta <= 0) setMode('over');
+      setTime(convertTimeToString(timeDelta));
+    }, 10));
+
+    if (mode === 'running') setRepeater(setInterval(() => {
+      setTime(convertTimeToString(Date.now() - timestamp));
+    }, 10));
+
+    if (mode === 'over') {
+      setTime('00:00:00');
+      clearInterval(repeater);
+    }
+  }, [mode]);
 
   const handleKeyPress = event => {
     event.preventDefault();
-    if (event.keyCode === SPACE && !isRunning ) {
-      if (!isCountdown) {
-        startingTime = Date.now();
-        setIsCountdown(true);
-        setTimer(setInterval(() => setTime(() => {
-          const timeDiff = maxCountdown - (Date.now() - startingTime);
-          if (timeDiff < 0) {
-            setIsRunning(true);
-            setTime('00:00:00');
-            clearInterval(timer);
-          }
-          return convertTimeToString(timeDiff);
-        }), 10));
-      }
-    }
+    if (event.keyCode === SPACE && mode === 'idle' ) setMode('countdown');
   };
 
   const handleKeyUp = event => {
+    clearInterval(repeater);
     if (event.keyCode === SPACE) {
-      clearInterval(timer);
-      if (!isRunning) {
-        startingTime = Date.now();
-        setIsRunning(true);
-        setTimer(setInterval(() => setTime(convertTimeToString((Date.now() - startingTime))), 10));
-      } else {
-        
-        clearInterval(timer);
-        setIsRunning(false);
-        setIsCountdown(false);
-        startingTime = 0;
+      if (mode === 'running') {
         registerResult(time);
-        return false;
+        setMode('idle');
+      } else if (mode === 'over') {
+        setMode('idle');
+      } else {
+        setMode('running');
       }
     }
   };
@@ -70,26 +69,46 @@ const Timer = ({ registerResult }) => {
     };
   });
 
+  const composeHelperText = () => {
+    switch (mode) {
+      case 'running': return '_';
+      case 'countdown': return 'Release SPACE to begin';
+      case 'over': return 'You are too late!';
+      default: return 'Hold SPACE to start countdown';
+    }
+  };
+
+  const helperColor = () => {
+    switch (mode) {
+      case 'running': return 'primary';
+      case 'over': return 'secondary';
+      default: return 'textSecondary';
+    }
+  };
+
   return (
     <Paper elevation={3} className={classes.root}>
       <Typography variant="h1"> {time} </Typography>
+      <Typography variant="h5" color={helperColor()}>
+        {composeHelperText()}
+      </Typography>
     </Paper>
   );
 };
 
-const convertTimeToString = timeDiff => {
+const convertTimeToString = timeDelta => {
   let resultTime = '';
 
-  const minute = Math.floor(timeDiff / 60000);
+  const minute = Math.floor(timeDelta / 60000);
   if (minute < 10) resultTime += '0';
   resultTime += minute + ':';
 
-  let second = Math.floor(timeDiff / 1000);
+  let second = Math.floor(timeDelta / 1000);
   if (second < 10) resultTime += '0';
   if (second > 59) second %= 60;
   resultTime += second + ':';
 
-  const mill = Math.floor((timeDiff % 1000) / 10);
+  const mill = Math.floor((timeDelta % 1000) / 10);
   if (mill < 10) resultTime += '0';
   resultTime += mill;
 

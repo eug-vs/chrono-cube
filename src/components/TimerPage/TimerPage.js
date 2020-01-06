@@ -32,16 +32,20 @@ const TimerPage = ({ recentSolutions, setRecentSolutions }) => {
     });
   };
 
+  const removeSolution = (id) => {
+    setRecentSolutions(recentSolutions.filter((solution => solution.id !== id)));
+  };
+
   return (
     <Box className={classes.root}>
       <Grid container direction="row" justify="space-around" spacing={8}>
         <Grid item xs={6}>
           <Timer registerResult={registerResult} style={{ position: 'fixed' }}/>
         </Grid>
-        <Grid item xs={4} container direction="column" spacing={6}>
-          {recentSolutions.slice(0, 5).map(solution => (
+        <Grid item xs={4} container direction="column" spacing={5}>
+          {recentSolutions.slice(0, 3).map(solution => (
             <Grid item key={solution.id}>
-              <SolutionCard data={solution} />
+              <SolutionCard data={solution} removeThisCard={removeSolution}/>
             </Grid>
           ))}
         </Grid>

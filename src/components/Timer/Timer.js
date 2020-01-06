@@ -22,6 +22,7 @@ const Timer = ({ registerResult }) => {
   const [repeater, setRepeater] = useState(0);
 
   useEffect(()=> {
+    clearInterval(repeater);
     const timestamp = Date.now();
 
     if (mode === 'countdown') setRepeater(setInterval(() => {
@@ -36,7 +37,6 @@ const Timer = ({ registerResult }) => {
 
     if (mode === 'over') {
       setTime('00:00:00');
-      clearInterval(repeater);
     }
   }, [mode]);
 

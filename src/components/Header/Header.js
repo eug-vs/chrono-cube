@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   AppBar,
   Tabs,
@@ -6,16 +7,29 @@ import {
   Typography,
   Toolbar,
 } from "@material-ui/core";
+
 import { makeStyles } from '@material-ui/core/styles';
+import TimerIcon from '@material-ui/icons/Timer';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import AssignmentIcon from '@material-ui/icons/Assignment';
+import GitHubIcon from '@material-ui/icons/GitHub';
+
 
 const useStyles = makeStyles(theme => ({
   logo: {
     color: theme.palette.secondary.main,
-    margin: theme.spacing(0, 2, 0, 3)
+    margin: theme.spacing(0, 3, 0, 3),
   },
   tab: {
-    padding: theme.spacing(3, 0, 3, 0)
-  },
+    '& .MuiTab-wrapper': {
+      padding: theme.spacing(2),
+      flexDirection: 'row',
+      '& svg': {
+        marginRight: theme.spacing(1),
+        marginBottom: '0 !important',
+      }
+    }
+  }
 }));
 
 
@@ -26,15 +40,28 @@ const Header = ({ page, setPage }) => {
     setPage(newPage);
   };
 
-  const menuItems = ['app', 'profile', 'scoreboard', 'news'];
+  const icons = {
+    app: (<TimerIcon />),
+    profile: (<AccountCircleIcon />),
+    scoreboard: (<AssignmentIcon />),
+    contribute: (<GitHubIcon />),
+  };
 
   return (
-  <AppBar position="sticky" className={classes.header}>
+  <AppBar position="sticky">
     <Toolbar>
-      <Typography variant="h4" className={classes.logo}> ChronoCube </Typography>
+      <Typography variant="h4" className={classes.logo}>
+        ChronoCube
+      </Typography>
       <Tabs onChange={handleChange} value={page}>
-        { menuItems.map(menuItem => (
-          <Tab label={menuItem} value={menuItem} key={menuItem} className={classes.tab}/>
+        { Object.keys(icons).map(item => (
+          <Tab
+            label={item}
+            icon={icons[item]}
+            value={item}
+            className={classes.tab}
+            key={item}
+          />
         ))}
       </Tabs>
     </Toolbar>

@@ -7,7 +7,7 @@ import { ThemeProvider, makeStyles } from '@material-ui/core/styles';
 
 import theme from "./theme";
 import Header from './components/Header/Header';
-import Timer from './components/Timer/Timer';
+import TimerPage from "./components/TimerPage/TimerPage";
 import Scoreboard from "./components/Scoreboard/Scoreboard";
 
 
@@ -21,13 +21,19 @@ const useStyles = makeStyles(theme => ({
 const App = () => {
 
   const [page, setPage] = useState('app');
+  const [recentSolutions, setRecentSolutions] = useState([]);
 
   const classes = useStyles();
 
   const getPageComponent = page => {
     switch (page) {
       case 'app':
-        return (<Timer/>);
+        return (
+          <TimerPage
+            recentSolutions={recentSolutions}
+            setRecentSolutions={setRecentSolutions}
+          />
+        );
       case 'scoreboard':
         return (<Scoreboard/>);
       default:

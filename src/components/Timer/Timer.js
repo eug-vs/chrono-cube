@@ -1,10 +1,19 @@
 import React, { useState, useEffect } from 'react';
 
-import { post } from '../../requests';
+import { Paper, Typography } from '@material-ui/core';
+import { makeStyles } from "@material-ui/core/styles";
 
-import { Typography } from '@material-ui/core';
+const useStyles = makeStyles(theme => ({
+  root: {
+    textAlign: 'center',
+    padding: theme.spacing(5),
+    background: theme.palette.primary.main,
+  },
+}));
 
-const Timer = () => {
+const Timer = ({ registerResult }) => {
+  const classes = useStyles();
+
   const SPACE = 32;
   const maxCountdown = 15000;
   const [time, setTime] = useState('00:00:00');
@@ -14,6 +23,7 @@ const Timer = () => {
   let startingTime;
 
   const handleKeyPress = event => {
+    event.preventDefault();
     if (event.keyCode === SPACE && !isRunning ) {
       if (!isCountdown) {
         startingTime = Date.now();
@@ -44,7 +54,7 @@ const Timer = () => {
         setIsRunning(false);
         setIsCountdown(false);
         startingTime = 0;
-        post('solutions/', {result: time});
+        registerResult(time);
         return false;
       }
     }
@@ -61,11 +71,11 @@ const Timer = () => {
   });
 
   return (
-    <Typography variant="h2"> {time} </Typography>
+    <Paper elevation={3} className={classes.root}>
+      <Typography variant="h1"> {time} </Typography>
+    </Paper>
   );
 };
-
-
 
 const convertTimeToString = timeDiff => {
   let resultTime = '';
@@ -86,5 +96,5 @@ const convertTimeToString = timeDiff => {
   return resultTime;
 };
 
-export default Timer;
 
+export default Timer;

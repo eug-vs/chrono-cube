@@ -8,6 +8,7 @@ import { ThemeProvider, makeStyles } from '@material-ui/core/styles';
 import theme from "./theme";
 import Header from './components/Header/Header';
 import TimerPage from "./components/TimerPage/TimerPage";
+import Profile from './components/Profile/Profile';
 import Scoreboard from "./components/Scoreboard/Scoreboard";
 
 
@@ -22,8 +23,10 @@ const App = () => {
 
   const [page, setPage] = useState('app');
   const [recentSolutions, setRecentSolutions] = useState([]);
-  const [userId, setUserId] = useState(0);
-  const [isUserSolutionsUpdated, setIsUserSolutionsUpdated] = useState(false);
+  const [user, setUser] = useState({
+    id: null,
+    username: 'anonymous',
+  });
 
   const classes = useStyles();
 
@@ -34,16 +37,13 @@ const App = () => {
           <TimerPage
             recentSolutions={recentSolutions}
             setRecentSolutions={setRecentSolutions}
+            user={user}
           />
         );
       case 'scoreboard':
         return (<Scoreboard />);
       case 'profile':
-        return (<Profile 
-                    update={isUserSolutionsUpdated} 
-                    setUpdate={setIsUserSolutionsUpdated} 
-                    userId={userId} 
-                    setUserId={setUserId} />)
+        return (<Profile user={user} setUser={setUser} />)
       default:
         return (
           <p>

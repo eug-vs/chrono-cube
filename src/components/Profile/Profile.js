@@ -2,71 +2,66 @@ import React, { useState, useEffect } from 'react';
 
 import {
   Container,
-  Grid,
-} from "@material-ui/core";
+  Grid
+} from '@material-ui/core';
 
 import { get, post } from '../../requests';
-
 import SolutionCard from '../SolutionCard/SolutionCard';
 
-const Profile = ({update, setUpdate, userId, setUserId}) => {
-  const [userSolutions, setUserSolutions] = useState([]);
-  const [userName, setUserName] = useState('');
+
+const Profile = ({user, setUser}) => {
+  const [profileSolutions, setProfileSolutions] = useState([]);
+
 
   const removeSolution = id => {
-    setUserSolutions(userSolutions.filter((solution => solution.id !== id)));
+    setProfileSolutions(profileSolutions.filter((solution => solution.id !== id)));
   };
 
   const addUser = event => {
-    post('users/', {username: userName})
+    post('users/', {username: user.username})
       .then(response => {
-        setUserId(response.data.id);
+        setUser({...user, id: response.data.id});
       });
       event.preventDefault();
     };
 
   useEffect(() => {
-    if (userId && !update) {
-      setUpdate(true);
-      get('solutions/')
+    if (user.id) {
+      get(`solutions/?author=${user.id}`)
         .then(response => {
-          setUserSolutions(response.data.reverse().filter(solution => {
-            if (solution.author) return solution.author.id === userId
-          }))
+          setProfileSolutions(response.data.reverse());
         });
     }
-  });
+  }, []);
 
-  const userSolutionCards = userSolutions.map(solution => (
+  const userSolutionCards = profileSolutions.map(solution => (
     <Grid item key={solution.id}>
       <SolutionCard  data={solution} removeThisCard={removeSolution} />
     </Grid>
   ));
 
-
+console.log(user);
   return (
     <Container maxWidth="xs">
-
     {
-      userId 
+      user.id 
       ? (
           <Grid container justify="center" direction="column" spacing={3}>
             {
               userSolutionCards.length
               ? userSolutionCards
-              : ( <h1>Welcome to ChronoCube, {userName}!</h1> )
+              : ( <h1>Welcome to ChronoCube, {user.username}!</h1> )
             }
           </Grid>
       )
       : (
         <form onSubmit={addUser} >
             <label>Tell us who you are!</label>
-            <input type='text' value={userName} onChange={event => setUserName(event.target.value)} />
+            <input type='text' value={user.username} onChange={event => setUser({...user, username: event.target.value})} />
             <input type='submit' value='Submit!' />
         </form>
       )
     }
-
     </Container>
   )
 }

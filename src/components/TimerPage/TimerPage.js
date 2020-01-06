@@ -17,13 +17,13 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const TimerPage = ({ recentSolutions, setRecentSolutions }) => {
+const TimerPage = ({ recentSolutions, setRecentSolutions, user }) => {
   const classes = useStyles();
 
-  const user = {
-    id: null,
-    username: 'anonymous',
-  };
+  // const user = {
+  //   id: null,
+  //   username: 'anonymous',
+  // };
 
   const registerResult = result => {
     const solution = { author_id: user.id, result };

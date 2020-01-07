@@ -1,23 +1,24 @@
 import React, { useEffect, useState } from 'react';
 
-import {
-  Container,
-  Typography,
-  Grid,
-} from "@material-ui/core";
-
 import { makeStyles } from "@material-ui/core/styles";
 
 import { get } from "../../requests";
+
+import SmartList from "../SmartList/SmartList";
 import SolutionCard from "../SolutionCard/SolutionCard";
 import Loading from "../Loading/Loading";
 
 
 const useStyles = makeStyles(theme => ({
-  pageHeader: {
-    textAlign: 'center',
-    margin: theme.spacing(2),
-  },
+  cell: {
+    display: 'flex',
+    justifyContent: 'center',
+    padding: theme.spacing(4),
+
+    '& .MuiCard-root': {
+      width: '30%',
+    }
+  }
 }));
 
 const Scoreboard = () => {
@@ -40,21 +41,26 @@ const Scoreboard = () => {
     updateSolutions();
   }, []);
 
-  return (
-    <Container maxWidth="xs">
-      <Typography variant="h3" className={classes.pageHeader}>
-        Scoreboard
-      </Typography>
-      {(solutions.length === 0) && <Loading />}
-      <Grid container justify="center" direction="column" spacing={3}>
-        {solutions.slice(0, 30).map(solution => (
-          <Grid item key={solution.id}>
-            <SolutionCard data={solution} removeThisCard={removeSolution}/>
-          </Grid>
-        ))}
-      </Grid>
-    </Container>
-  );
+  const renderItem = ({ index, style }) => {
+    return (
+      <div style={style} className={classes.cell}>
+        <SolutionCard data={solutions[index]} removeThisCard={removeSolution}/>
+      </div>
+    )
+  };
+
+
+  return (solutions.length === 0) ?
+    <div className={classes.cell}>
+      <Loading/>
+    </div>
+    :
+    <SmartList
+      cellHeight={300}
+      itemCount={solutions.length}
+      renderItem={renderItem}
+    />
 };
+
 
 export default Scoreboard;

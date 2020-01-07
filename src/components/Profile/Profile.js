@@ -2,15 +2,19 @@ import React, { useState, useEffect } from 'react';
 
 import {
   Container,
-  Grid
+  Grid,
+  Input,
+  Typography
 } from '@material-ui/core';
 
 import { get, post } from '../../requests';
 import SolutionCard from '../SolutionCard/SolutionCard';
+import Loading from "../Loading/Loading";
 
 
 const Profile = ({user, setUser}) => {
   const [profileSolutions, setProfileSolutions] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
 
   const removeSolution = id => {
@@ -21,6 +25,7 @@ const Profile = ({user, setUser}) => {
     post('users/', {username: user.username})
       .then(response => {
         setUser({...user, id: response.data.id});
+        setIsLoading(false);
       });
       event.preventDefault();
     };
@@ -29,7 +34,10 @@ const Profile = ({user, setUser}) => {
     if (user.id) {
       get(`solutions/?author=${user.id}`)
         .then(response => {
-          setProfileSolutions(response.data.reverse());
+          if (!response.data.length) setIsLoading(false);
+          setTimeout(() => {
+            setProfileSolutions(response.data.reverse());
+          }, 300);
         });
     }
   }, []);
@@ -42,27 +50,34 @@ const Profile = ({user, setUser}) => {
 
 console.log(user);
   return (
-    <Container maxWidth="xs">
+    <div>
     {
       user.id 
       ? (
+        <Container maxWidth="xs">
           <Grid container justify="center" direction="column" spacing={3}>
             {
               userSolutionCards.length
               ? userSolutionCards
-              : ( <h1>Welcome to ChronoCube, {user.username}!</h1> )
+              : isLoading ? (<Loading />) : ( <h1>Welcome to ChronoCube, {user.username}!</h1> )
             }
           </Grid>
+        </Container>
+
       )
       : (
         <form onSubmit={addUser} >
-            <label>Tell us who you are!</label>
-            <input type='text' value={user.username} onChange={event => setUser({...user, username: event.target.value})} />
-            <input type='submit' value='Submit!' />
+          <Container maxWidth="xs">
+            <Grid container justify="center" direction="column" spacing={3}>
+              <Typography>Tell us who you are</Typography>
+              <Input autoFocus='true' type='text' value={user.username} onChange={event => setUser({...user, username: event.target.value})} />
+              <Input type='submit' value='Submit!' />
+            </Grid>
+          </Container>
         </form>
       )
     }
-    </Container>
+    </div>
   )
 }
 

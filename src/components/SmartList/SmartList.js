@@ -1,8 +1,9 @@
 import React from 'react';
 
-import { FixedSizeList } from "react-window";
+import { FixedSizeList } from 'react-window';
+import AutoSizer from 'react-virtualized-auto-sizer';
 
-import { makeStyles } from "@material-ui/core";
+import { makeStyles } from '@material-ui/core';
 
 
 const useStyles = makeStyles(theme => ({
@@ -12,25 +13,25 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-const SmartList = ({ height, width, cellHeight, itemCount, renderItem }) => {
+const SmartList = ({ itemSize, itemCount, renderItem }) => {
   const classes = useStyles();
 
-  if (!height) {
-    const windowHeight = window.innerHeight;
-    const headerHeight = document.getElementsByClassName("MuiAppBar-root")[0].clientHeight;
-    height = windowHeight - headerHeight
-  }
-
   return (
-    <FixedSizeList
-      height={height}
-      width={width}
-      itemSize={cellHeight}
-      itemCount={itemCount}
-      className={classes.root}
-    >
-      {renderItem}
-    </FixedSizeList>
+    <div style={{ flex: '1 1 auto'}}>
+      <AutoSizer>
+        {({ width, height }) => (
+          <FixedSizeList
+            height={height}
+            width={width}
+            itemSize={itemSize}
+            itemCount={itemCount}
+            className={classes.root}
+          >
+            {renderItem}
+          </FixedSizeList>
+        )}
+      </AutoSizer>
+    </div>
   );
 };
 

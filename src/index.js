@@ -13,7 +13,6 @@ import Scoreboard from "./components/Scoreboard/Scoreboard";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    padding: theme.spacing(2),
   },
 }));
 
@@ -57,4 +56,5 @@ const App = () => {
   );
 };
 
+document.body.style.overflow = "hidden";
 ReactDOM.render(<App />, document.getElementById('root'));

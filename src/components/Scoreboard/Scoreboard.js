@@ -7,6 +7,7 @@ import { get } from "../../requests";
 import SmartList from "../SmartList/SmartList";
 import SolutionCard from "../SolutionCard/SolutionCard";
 import Loading from "../Loading/Loading";
+import Window from "../Window/Window";
 
 
 const useStyles = makeStyles(theme => ({
@@ -49,17 +50,20 @@ const Scoreboard = () => {
     )
   };
 
-
-  return (solutions.length === 0) ?
-    <div className={classes.cell}>
-      <Loading/>
-    </div>
-    :
-    <SmartList
-      cellHeight={300}
-      itemCount={solutions.length}
-      renderItem={renderItem}
-    />
+  return (
+    <Window type="mono">
+      { solutions.length === 0 &&
+      <div className={classes.cell}>
+        <Loading/>
+      </div>
+      }
+      <SmartList
+        itemSize={300}
+        itemCount={solutions.length}
+        renderItem={renderItem}
+      />
+    </Window>
+  )
 };
 
 

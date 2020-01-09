@@ -1,19 +1,22 @@
 import React from 'react';
 
-import { Grid, Box } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { post } from '../../requests';
 
-import Timer from "../Timer/Timer";
+import Window from "../Window/Window";
+import ContentSection from "../ContentSection/ContentSection";
+import Timer from "./Timer/Timer";
+import SmartList from "../SmartList/SmartList";
 import SolutionCard from "../SolutionCard/SolutionCard";
 
-import { post } from '../../requests';
+import { Typography, makeStyles } from "@material-ui/core";
 
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    padding: theme.spacing(5, 4, 4, 4),
+  primary: {
+    padding: theme.spacing(4),
+  },
+  cell: {
+    padding: theme.spacing(5),
   },
 }));
 
@@ -36,21 +39,36 @@ const TimerPage = ({ recentSolutions, setRecentSolutions }) => {
     setRecentSolutions(recentSolutions.filter((solution => solution.id !== id)));
   };
 
+  const renderItem = ({ index, style }) => {
+    const solution = recentSolutions[index];
+    return (
+      <div style={style} className={classes.cell}>
+        <SolutionCard data={solution} removeThisCard={removeSolution} />
+      </div>
+    );
+  };
+
   return (
-    <Box className={classes.root}>
-      <Grid container direction="row" justify="space-around" spacing={8}>
-        <Grid item xs={6}>
-          <Timer registerResult={registerResult} style={{ position: 'fixed' }}/>
-        </Grid>
-        <Grid item xs={4} container direction="column" spacing={5}>
-          {recentSolutions.slice(0, 3).map(solution => (
-            <Grid item key={solution.id}>
-              <SolutionCard data={solution} removeThisCard={removeSolution}/>
-            </Grid>
-          ))}
-        </Grid>
-      </Grid>
-    </Box>
+    <>
+      <Window type="primary">
+        <div className={classes.primary}>
+          <ContentSection sectionName="Welcome to ChronoCube!">
+            <Typography>
+              Here is some text about how cool this application is, why you should use it
+              and how to make it better!
+            </Typography>
+          </ContentSection>
+          <Timer registerResult={registerResult} />
+        </div>
+      </Window>
+      <Window type="secondary" name="Recent solutions">
+        <SmartList
+          itemSize={270}
+          itemCount={recentSolutions.length}
+          renderItem={renderItem}
+        />
+      </Window>
+    </>
   );
 };
 

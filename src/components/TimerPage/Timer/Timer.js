@@ -8,7 +8,7 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'center',
     padding: theme.spacing(5),
     background: theme.palette.primary.main,
-    marginTop: theme.spacing(25),
+    marginTop: theme.spacing(20),
   },
 }));
 

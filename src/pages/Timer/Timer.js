@@ -4,7 +4,7 @@ import { post } from '../../requests';
 
 import Window from "../../components/Window/Window";
 import ContentSection from "../../components/ContentSection/ContentSection";
-import Timer from "./Timer/Timer";
+import TimerButton from "./TimerButton/TimerButton";
 import SmartList from "../../components/SmartList/SmartList";
 import SolutionCard from "../../components/SolutionCard/SolutionCard";
 
@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const TimerPage = ({ recentSolutions, setRecentSolutions }) => {
+const Timer = ({ recentSolutions, setRecentSolutions }) => {
   const classes = useStyles();
 
   const user = {
@@ -58,7 +58,7 @@ const TimerPage = ({ recentSolutions, setRecentSolutions }) => {
               and how to make it better!
             </Typography>
           </ContentSection>
-          <Timer registerResult={registerResult} />
+          <TimerButton registerResult={registerResult} />
         </div>
       </Window>
       <Window type="secondary" name="Recent solutions">
@@ -73,4 +73,4 @@ const TimerPage = ({ recentSolutions, setRecentSolutions }) => {
 };
 
 
-export default TimerPage;
+export default Timer;

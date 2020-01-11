@@ -6,7 +6,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 
 import theme from "./theme";
 import Header from './components/Header/Header';
-import TimerPage from "./pages/TimerPage/TimerPage";
+import Timer from "./pages/Timer/Timer";
 import Scoreboard from "./pages/Scoreboard/Scoreboard";
 
 
@@ -15,11 +15,11 @@ const App = () => {
   const [page, setPage] = useState('app');
   const [recentSolutions, setRecentSolutions] = useState([]);
 
-  const getPageComponent = page => {
+  const Page = ({ page }) => {
     switch (page) {
       case 'app':
         return (
-          <TimerPage
+          <Timer
             recentSolutions={recentSolutions}
             setRecentSolutions={setRecentSolutions}
           />
@@ -40,7 +40,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline/>
       <Header page={page} setPage={setPage}/>
-      { getPageComponent(page) }
+      <Page page={page} />
     </ThemeProvider>
   );
 };

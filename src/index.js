@@ -8,6 +8,7 @@ import theme from "./theme";
 import Header from './components/Header/Header';
 import Timer from "./pages/Timer/Timer";
 import Scoreboard from "./pages/Scoreboard/Scoreboard";
+import Contribute from "./pages/Contribute/Contribute";
 
 
 const App = () => {
@@ -24,8 +25,13 @@ const App = () => {
             setRecentSolutions={setRecentSolutions}
           />
         );
+
       case 'scoreboard':
-        return (<Scoreboard/>);
+        return (<Scoreboard />);
+
+      case 'contribute':
+        return (<Contribute />);
+
       default:
         return (
           <p>

@@ -2,7 +2,6 @@ import React from 'react';
 
 import {
   Typography,
-  Link,
   Button,
   makeStyles,
 } from "@material-ui/core";
@@ -29,6 +28,9 @@ const Contribute = () => {
             <p>
               ChronoCube is an Open-Source application, and we welcome anyone who desires to help our project!
             </p>
+            <Button variant="contained" color="secondary" href="https://github.com/users/Eug-VS/projects/3">
+              Track our progress
+            </Button>
           </Typography>
         </ContentSection>
         <ContentSection sectionName="Technology stack">
@@ -36,23 +38,20 @@ const Contribute = () => {
             <p> We only use modern and most relevant technologies to achieve the best results! </p>
             <p>
               <ul>
-                <li><Typography><a href="#">
+                <li><Typography><a href="https://www.django-rest-framework.org/">
                   Django REST Framework
                 </a></Typography></li>
-                <li><Typography><a href="#">
+                <li><Typography><a href="https://reactjs.org/">
                   React.js
                 </a></Typography></li>
-                <li><Typography><a href="#">
+                <li><Typography><a href="https://material-ui.com/">
                   Material UI components
                 </a></Typography></li>
               </ul>
               <Typography> Special thanks to other Open-Source projects which made ChronoCube possible: </Typography>
               <ul>
-                <li><Typography><a href="#">
+                <li><Typography><a href="https://github.com/bvaughn/react-window">
                   react-window
-                </a></Typography></li>
-                <li><Typography><a href="#">
-                  react-virtualized-auto-sizer
                 </a></Typography></li>
               </ul>
             </p>

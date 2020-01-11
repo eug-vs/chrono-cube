@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
     },
     '& .MuiButton-root': {
       color: theme.palette.background.paper,
-      margin: theme.spacing(2, 2, 2, 0),
+      margin: theme.spacing(1, 2, 2, 0),
       fontWeight: 'bold',
     },
   },

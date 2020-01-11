@@ -24,6 +24,7 @@ const App = () => {
           <Timer
             recentSolutions={recentSolutions}
             setRecentSolutions={setRecentSolutions}
+            setPage={setPage}
           />
         );
 

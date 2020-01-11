@@ -8,7 +8,7 @@ import TimerButton from "./TimerButton/TimerButton";
 import SmartList from "../../components/SmartList/SmartList";
 import SolutionCard from "../../components/SolutionCard/SolutionCard";
 
-import { Typography, makeStyles } from "@material-ui/core";
+import { Typography, Button, makeStyles } from "@material-ui/core";
 
 
 const useStyles = makeStyles(theme => ({
@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Timer = ({ recentSolutions, setRecentSolutions }) => {
+const Timer = ({ recentSolutions, setRecentSolutions, setPage }) => {
   const classes = useStyles();
 
   const user = {
@@ -33,6 +33,10 @@ const Timer = ({ recentSolutions, setRecentSolutions }) => {
     post('solutions/', solution).then(response => {
       setRecentSolutions([response.data].concat(recentSolutions));
     });
+  };
+
+  const handleLearnMore = () => {
+    setPage('contribute');
   };
 
   const removeSolution = (id) => {
@@ -54,8 +58,14 @@ const Timer = ({ recentSolutions, setRecentSolutions }) => {
         <div className={classes.primary}>
           <ContentSection sectionName="Welcome to ChronoCube!">
             <Typography>
-              Here is some text about how cool this application is, why you should use it
-              and how to make it better!
+              <p>
+                ChronoCube is a professional speedcubing timer.
+                Share your results publicly - let everyone see your progress and
+                achievements!
+                Every speedcuber will benefit
+                from using it - both amateur and professional!
+              </p>
+              <Button variant="contained" color="secondary" onClick={handleLearnMore}> Learn more </Button>
             </Typography>
           </ContentSection>
           <TimerButton registerResult={registerResult} />

@@ -7,8 +7,8 @@ import { ThemeProvider, makeStyles } from '@material-ui/core/styles';
 
 import theme from "./theme";
 import Header from './components/Header/Header';
-import TimerPage from "./components/TimerPage/TimerPage";
-import Scoreboard from "./components/Scoreboard/Scoreboard";
+import TimerPage from "./pages/TimerPage/TimerPage";
+import Scoreboard from "./pages/Scoreboard/Scoreboard";
 
 
 const useStyles = makeStyles(theme => ({

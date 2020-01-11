@@ -4,10 +4,10 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import { get } from "../../requests";
 
-import SmartList from "../SmartList/SmartList";
-import SolutionCard from "../SolutionCard/SolutionCard";
-import Loading from "../Loading/Loading";
-import Window from "../Window/Window";
+import SmartList from "../../components/SmartList/SmartList";
+import SolutionCard from "../../components/SolutionCard/SolutionCard";
+import Loading from "../../components/Loading/Loading";
+import Window from "../../components/Window/Window";
 
 
 const useStyles = makeStyles(theme => ({

@@ -2,11 +2,11 @@ import React from 'react';
 
 import { post } from '../../requests';
 
-import Window from "../Window/Window";
-import ContentSection from "../ContentSection/ContentSection";
+import Window from "../../components/Window/Window";
+import ContentSection from "../../components/ContentSection/ContentSection";
 import Timer from "./Timer/Timer";
-import SmartList from "../SmartList/SmartList";
-import SolutionCard from "../SolutionCard/SolutionCard";
+import SmartList from "../../components/SmartList/SmartList";
+import SolutionCard from "../../components/SolutionCard/SolutionCard";
 
 import { Typography, makeStyles } from "@material-ui/core";
 

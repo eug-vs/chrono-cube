@@ -7,7 +7,7 @@ import AutoSizer from 'react-virtualized-auto-sizer';
 const SmartList = ({ itemSize, itemCount, renderItem }) => {
 
   return (
-    <div style={{ flex: '1 1 auto'}}>
+    <div style={{ flex: '1 1 auto', overflow: 'hidden' }}>
       <AutoSizer>
         {({ width, height }) => (
           <FixedSizeList

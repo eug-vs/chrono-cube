@@ -30,9 +30,9 @@ const ContentSection = ({ sectionName, children }) => {
     <>
       <Typography variant="h4">{sectionName}</Typography>
       <Divider variant="middle"/>
-      <div className={classes.content}>
+      <Typography component="div" className={classes.content}>
         {children}
-      </div>
+      </Typography>
     </>
   );
 

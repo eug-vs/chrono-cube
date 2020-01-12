@@ -57,16 +57,14 @@ const Timer = ({ recentSolutions, setRecentSolutions, setPage }) => {
       <Window type="primary">
         <div className={classes.primary}>
           <ContentSection sectionName="Welcome to ChronoCube!">
-            <Typography>
-              <p>
-                ChronoCube is a professional speedcubing timer.
-                Share your results publicly - let everyone see your progress and
-                achievements!
-                Every speedcuber will benefit
-                from using it - both amateur and professional!
-              </p>
-              <Button variant="contained" color="secondary" onClick={handleLearnMore}> Learn more </Button>
-            </Typography>
+            <p>
+              ChronoCube is a professional speedcubing timer.
+              Share your results publicly - let everyone see your progress and
+              achievements!
+              Every speedcuber will benefit
+              from using it - both amateur and professional!
+            </p>
+            <Button variant="contained" color="secondary" onClick={handleLearnMore}> Learn more </Button>
           </ContentSection>
           <TimerButton registerResult={registerResult} />
         </div>

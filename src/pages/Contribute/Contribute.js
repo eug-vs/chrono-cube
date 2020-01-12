@@ -38,59 +38,51 @@ const Contribute = () => {
     <Window type="mono">
       <div className={classes.mono}>
         <ContentSection sectionName="Thank You for using ChronoCube!">
-          <Typography>
-            <p>
-              ChronoCube is an Open-Source application, and we welcome anyone who desires to help our project!
-            </p>
-            <Button variant="contained" color="secondary" href="https://github.com/users/Eug-VS/projects/3">
-              Track our progress
-            </Button>
-          </Typography>
+          <p>
+            ChronoCube is an Open-Source application, and we welcome anyone who desires to help our project!
+          </p>
+          <Button variant="contained" color="secondary" href="https://github.com/users/Eug-VS/projects/3">
+            Track our progress
+          </Button>
         </ContentSection>
         <ContentSection sectionName="Technology stack">
-          <Typography>
-            <p> We only use modern and most relevant technologies to achieve the best results! </p>
-            <p>
-              <ul>
-                <li><Typography><a href="https://www.django-rest-framework.org/">
-                  Django REST Framework
-                </a></Typography></li>
-                <li><Typography><a href="https://reactjs.org/">
-                  React.js
-                </a></Typography></li>
-                <li><Typography><a href="https://material-ui.com/">
-                  Material UI components
-                </a></Typography></li>
-              </ul>
-              <Typography> Special thanks to other Open-Source projects which made ChronoCube possible: </Typography>
-              <ul>
-                <li><Typography><a href="https://github.com/bvaughn/react-window">
-                  react-window
-                </a></Typography></li>
-              </ul>
-            </p>
-          </Typography>
+          <p> We only use modern and most relevant technologies to achieve the best results! </p>
+          <ul>
+            <li><Link href="https://www.django-rest-framework.org/">
+              Django REST Framework
+            </Link></li>
+            <li><Link href="https://reactjs.org/">
+              React.js
+            </Link></li>
+            <li><Link href="https://material-ui.com/">
+              Material UI components
+            </Link></li>
+          </ul>
+          <p> Special thanks to other Open-Source projects which made ChronoCube possible: </p>
+          <ul>
+            <li><Link href="https://github.com/bvaughn/react-window">
+              react-window
+            </Link></li>
+          </ul>
         </ContentSection>
         <ContentSection sectionName="How can I contribute to the project?">
-          <Typography>
-            <p> Thank You for considering helping our project! </p>
-            <p>
-              All the development process is being tracked on
-              the <a href="https://github.com/users/Eug-VS/projects/3">KanBan board</a>.
-              You can always check it to see what is the current state of the project.
-              To contribute your code, fork our repository and then open
-              a <a href="https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests">
-              Pull Request</a>. We will carefully review and, hopefully, accept it!
-              If you are unfamiliar with this kind of workflow, we recommend
-              reading <a href="https://github.com/features/project-management/">GitHub guidelines</a>.
-            </p>
-            <p>
-              We always welcome newcomers! If you are unfamiliar with certain technologies or even with the
-              development in general, it is great time to start learning something new!
-              Our community will kindly assist every your step, and with us you can easily become
-              highly-evaluated developer!
-            </p>
-          </Typography>
+          <p> Thank You for considering helping our project! </p>
+          <p>
+            All the development process is being tracked on
+            the <Link href="https://github.com/users/Eug-VS/projects/3">KanBan board</Link>.
+            You can always check it to see what is the current state of the project.
+            To contribute your code, fork our repository and then open
+            a <Link href="https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests">
+            Pull Request</Link>. We will carefully review and, hopefully, accept it!
+            If you are unfamiliar with this kind of workflow, we recommend
+            reading <Link href="https://github.com/features/project-management/">GitHub guidelines</Link>.
+          </p>
+          <p>
+            We always welcome newcomers! If you are unfamiliar with certain technologies or even with the
+            development in general, it is great time to start learning something new!
+            Our community will kindly assist every your step, and with us you can easily become
+            highly-evaluated developer!
+          </p>
           <Button variant="contained" color="secondary" href="https://github.com/Eug-VS/chrono-cube/issues/new">
             Suggest feature
           </Button>
@@ -107,17 +99,15 @@ const Contribute = () => {
 
                 return (
                   <>
-                    <ListItem>
+                    <ListItem key={developer.username}>
                       <Link href={githubUrl}>
                         <Avatar alt={developer.username} src={avatarUrl} />
                       </Link>
                       <div>
                         <Link href={githubUrl}>
-                          <Typography>
-                            {developer.username}
-                          </Typography>
+                          {developer.username}
                         </Link>
-                        <Typography color="textSecondary">
+                        <Typography component="div" color="textSecondary">
                           {developer.role}
                         </Typography>
                       </div>
@@ -129,7 +119,7 @@ const Contribute = () => {
             }
             <ListItem>
               <Avatar />
-              <Typography>You can be here!</Typography>
+              You can be here!
             </ListItem>
           </List>
           <Button

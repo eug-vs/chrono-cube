@@ -8,7 +8,7 @@ import TimerButton from "./TimerButton/TimerButton";
 import SmartList from "../../components/SmartList/SmartList";
 import SolutionCard from "../../components/SolutionCard/SolutionCard";
 
-import { Typography, Button, makeStyles } from "@material-ui/core";
+import { Button, makeStyles } from "@material-ui/core";
 
 
 const useStyles = makeStyles(theme => ({
@@ -20,13 +20,8 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Timer = ({ recentSolutions, setRecentSolutions, setPage }) => {
+const Timer = ({ user, recentSolutions, setRecentSolutions, setPage }) => {
   const classes = useStyles();
-
-  const user = {
-    id: null,
-    username: 'anonymous',
-  };
 
   const registerResult = result => {
     const solution = { author_id: user.id, result };

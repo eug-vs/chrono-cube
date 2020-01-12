@@ -16,6 +16,7 @@ import Profile from "./pages/Profile/Profile";
 const App = () => {
 
   const [page, setPage] = useState('app');
+  const [user, setUser] = useState({ username: 'anonymous', id: null });
   const [recentSolutions, setRecentSolutions] = useState([]);
 
   const Page = ({ page }) => {
@@ -23,6 +24,7 @@ const App = () => {
       case 'app':
         return (
           <Timer
+            user={user}
             recentSolutions={recentSolutions}
             setRecentSolutions={setRecentSolutions}
             setPage={setPage}
@@ -30,7 +32,7 @@ const App = () => {
         );
 
       case 'profile':
-        return <Profile/>;
+        return <Profile user={user} setUser={setUser} />;
 
       case 'scoreboard':
         return <Scoreboard />;

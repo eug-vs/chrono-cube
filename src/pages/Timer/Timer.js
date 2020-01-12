@@ -2,13 +2,13 @@ import React from 'react';
 
 import { post } from '../../requests';
 
-import Window from "../Window/Window";
-import ContentSection from "../ContentSection/ContentSection";
-import Timer from "./Timer/Timer";
-import SmartList from "../SmartList/SmartList";
-import SolutionCard from "../SolutionCard/SolutionCard";
+import Window from "../../components/Window/Window";
+import ContentSection from "../../components/ContentSection/ContentSection";
+import TimerButton from "./TimerButton/TimerButton";
+import SmartList from "../../components/SmartList/SmartList";
+import SolutionCard from "../../components/SolutionCard/SolutionCard";
 
-import { Typography, makeStyles } from "@material-ui/core";
+import { Typography, Button, makeStyles } from "@material-ui/core";
 
 
 const useStyles = makeStyles(theme => ({
@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const TimerPage = ({ recentSolutions, setRecentSolutions }) => {
+const Timer = ({ recentSolutions, setRecentSolutions, setPage }) => {
   const classes = useStyles();
 
   const user = {
@@ -33,6 +33,10 @@ const TimerPage = ({ recentSolutions, setRecentSolutions }) => {
     post('solutions/', solution).then(response => {
       setRecentSolutions([response.data].concat(recentSolutions));
     });
+  };
+
+  const handleLearnMore = () => {
+    setPage('contribute');
   };
 
   const removeSolution = (id) => {
@@ -53,12 +57,16 @@ const TimerPage = ({ recentSolutions, setRecentSolutions }) => {
       <Window type="primary">
         <div className={classes.primary}>
           <ContentSection sectionName="Welcome to ChronoCube!">
-            <Typography>
-              Here is some text about how cool this application is, why you should use it
-              and how to make it better!
-            </Typography>
+            <p>
+              ChronoCube is a professional speedcubing timer.
+              Share your results publicly - let everyone see your progress and
+              achievements!
+              Every speedcuber will benefit
+              from using it - both amateur and professional!
+            </p>
+            <Button variant="contained" color="secondary" onClick={handleLearnMore}> Learn more </Button>
           </ContentSection>
-          <Timer registerResult={registerResult} />
+          <TimerButton registerResult={registerResult} />
         </div>
       </Window>
       <Window type="secondary" name="Recent solutions">
@@ -73,4 +81,4 @@ const TimerPage = ({ recentSolutions, setRecentSolutions }) => {
 };
 
 
-export default TimerPage;
+export default Timer;

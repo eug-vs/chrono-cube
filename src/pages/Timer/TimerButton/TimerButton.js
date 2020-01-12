@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Timer = ({ registerResult }) => {
+const TimerButton = ({ registerResult }) => {
   const classes = useStyles();
 
   const SPACE = 32;
@@ -116,4 +116,4 @@ const convertTimeToString = timeDelta => {
 };
 
 
-export default Timer;
+export default TimerButton;

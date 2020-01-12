@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.js": "/chrono-cube/static/js/main.3276ee8f.chunk.js",
-    "main.js.map": "/chrono-cube/static/js/main.3276ee8f.chunk.js.map",
+    "main.js": "/chrono-cube/static/js/main.f5e4a629.chunk.js",
+    "main.js.map": "/chrono-cube/static/js/main.f5e4a629.chunk.js.map",
     "runtime-main.js": "/chrono-cube/static/js/runtime-main.82982f60.js",
     "runtime-main.js.map": "/chrono-cube/static/js/runtime-main.82982f60.js.map",
     "static/css/2.b981f2fb.chunk.css": "/chrono-cube/static/css/2.b981f2fb.chunk.css",
     "static/js/2.5db9a9f7.chunk.js": "/chrono-cube/static/js/2.5db9a9f7.chunk.js",
     "static/js/2.5db9a9f7.chunk.js.map": "/chrono-cube/static/js/2.5db9a9f7.chunk.js.map",
     "index.html": "/chrono-cube/index.html",
-    "precache-manifest.76d811ce9a9beb01a345494ee5097085.js": "/chrono-cube/precache-manifest.76d811ce9a9beb01a345494ee5097085.js",
+    "precache-manifest.bc122b01827b012f6adc0c7b44e052df.js": "/chrono-cube/precache-manifest.bc122b01827b012f6adc0c7b44e052df.js",
     "service-worker.js": "/chrono-cube/service-worker.js",
     "static/css/2.b981f2fb.chunk.css.map": "/chrono-cube/static/css/2.b981f2fb.chunk.css.map",
     "static/js/2.5db9a9f7.chunk.js.LICENSE": "/chrono-cube/static/js/2.5db9a9f7.chunk.js.LICENSE",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.82982f60.js",
     "static/css/2.b981f2fb.chunk.css",
     "static/js/2.5db9a9f7.chunk.js",
-    "static/js/main.3276ee8f.chunk.js"
+    "static/js/main.f5e4a629.chunk.js"
   ]
 }

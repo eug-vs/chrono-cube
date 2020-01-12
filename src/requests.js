@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseUrl = 'http://localhost:8000/';
+const baseUrl = 'http://eugvs.pythonanywhere.com/';
 const baseApiUrl = baseUrl + 'api/';
 
 export const get = (url) => {

@@ -104,8 +104,8 @@ const convertTimeToString = timeDelta => {
   resultTime += minute + ':';
 
   let second = Math.floor(timeDelta / 1000);
-  if (second < 10) resultTime += '0';
   if (second > 59) second %= 60;
+  if (second < 10) resultTime += '0';
   resultTime += second + ':';
 
   const mill = Math.floor((timeDelta % 1000) / 10);

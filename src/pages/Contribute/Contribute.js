@@ -11,6 +11,10 @@ import {
   makeStyles,
 } from "@material-ui/core";
 
+import TrendingUpIcon from '@material-ui/icons/TrendingUp';
+import BugReportIcon from '@material-ui/icons/BugReport';
+import NewReleasesIcon from '@material-ui/icons/NewReleases';
+
 import Window from "../../components/Window/Window";
 import ContentSection from "../../components/ContentSection/ContentSection";
 
@@ -41,7 +45,12 @@ const Contribute = () => {
           <p>
             ChronoCube is an Open-Source application, and we welcome anyone who desires to help our project!
           </p>
-          <Button variant="contained" color="secondary" href="https://github.com/users/Eug-VS/projects/3">
+          <Button
+            variant="contained"
+            color="secondary"
+            startIcon={<TrendingUpIcon />}
+            href="https://github.com/users/Eug-VS/projects/3"
+          >
             Track our progress
           </Button>
         </ContentSection>
@@ -83,10 +92,20 @@ const Contribute = () => {
             Our community will kindly assist every your step, and with us you can easily become
             highly-evaluated developer!
           </p>
-          <Button variant="contained" color="secondary" href="https://github.com/Eug-VS/chrono-cube/issues/new">
+          <Button
+            variant="contained"
+            color="secondary"
+            startIcon={<NewReleasesIcon />}
+            href="https://github.com/Eug-VS/chrono-cube/issues/new"
+          >
             Suggest feature
           </Button>
-          <Button variant="contained" color="secondary" href="https://github.com/Eug-VS/chrono-cube/issues/new">
+          <Button
+            variant="contained"
+            color="secondary"
+            startIcon={<BugReportIcon />}
+            href="https://github.com/Eug-VS/chrono-cube/issues/new"
+          >
             Report a bug
           </Button>
         </ContentSection>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,12 +12,23 @@ import Scoreboard from "./pages/Scoreboard/Scoreboard";
 import Contribute from "./pages/Contribute/Contribute";
 import Profile from "./pages/Profile/Profile";
 
+import { get } from "./requests";
+
 
 const App = () => {
 
   const [page, setPage] = useState('app');
   const [user, setUser] = useState({ username: 'anonymous', id: null });
   const [recentSolutions, setRecentSolutions] = useState([]);
+
+  useEffect(() => {
+    const userId = +localStorage.getItem('userId');
+    if (userId) {
+      get('users/').then(response => {
+        setUser(response.data.filter(user => user.id === +userId)[0]);
+      });
+    }
+  }, []);
 
   const Page = ({ page }) => {
     switch (page) {

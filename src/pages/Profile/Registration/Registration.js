@@ -15,19 +15,32 @@ import {get, post} from "../../../requests";
 const Registration = ({ setUser }) => {
 
   const [username, setUsername] = useState('');
+  const [isRememberMe, setIsRememberMe] = useState(false);
 
   const handleChange = (event) => {
     setUsername(event.target.value);
   };
 
+  const handleCheck = (event) => {
+    setIsRememberMe(event.target.checked);
+  };
+
   const handleSubmit = () => {
     post('users/', { username })
       .then(response => {
-        setUser(response.data);
+        const user = response.data;
+        setUser(user);
+        if (isRememberMe) {
+          localStorage.setItem('userId', user.id);
+        }
       })
       .catch(err => {
         get('users/').then(response => {
-          setUser(response.data.filter(user => user.username === username)[0]);
+          const user = response.data.filter(user => user.username === username)[0];
+          setUser(user);
+          if (isRememberMe) {
+            localStorage.setItem('userId', user.id);
+          }
         });
       });
   };
@@ -47,7 +60,7 @@ const Registration = ({ setUser }) => {
         </Grid>
         <Grid item>
           <FormControlLabel
-            control={<Checkbox color="secondary" />}
+            control={<Checkbox color="secondary" onChange={handleCheck} />}
             label="Remember me"
           />
         </Grid>
@@ -57,7 +70,6 @@ const Registration = ({ setUser }) => {
           </Button>
         </Grid>
       </Grid>
-
     </ContentSection>
   );
 };

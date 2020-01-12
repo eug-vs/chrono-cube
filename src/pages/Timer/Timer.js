@@ -34,6 +34,10 @@ const Timer = ({ user, recentSolutions, setRecentSolutions, setPage }) => {
     setPage('contribute');
   };
 
+  const handleLogin = () => {
+    setPage('profile');
+  };
+
   const removeSolution = (id) => {
     setRecentSolutions(recentSolutions.filter((solution => solution.id !== id)));
   };
@@ -61,6 +65,12 @@ const Timer = ({ user, recentSolutions, setRecentSolutions, setPage }) => {
             </p>
             <Button variant="contained" color="secondary" onClick={handleLearnMore}> Learn more </Button>
           </ContentSection>
+          {user.id === null &&
+          <ContentSection sectionName="Log into an account">
+            <p> Tell us your name so we can track your progress</p>
+            <Button variant="contained" color="secondary" onClick={handleLogin} size="large"> Login </Button>
+          </ContentSection>
+          }
           <TimerButton registerResult={registerResult} />
         </div>
       </Window>

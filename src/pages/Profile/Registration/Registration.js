@@ -26,23 +26,25 @@ const Registration = ({ setUser }) => {
   };
 
   const handleSubmit = () => {
-    post('users/', { username })
-      .then(response => {
-        const user = response.data;
-        setUser(user);
-        if (isRememberMe) {
-          localStorage.setItem('userId', user.id);
-        }
-      })
-      .catch(err => {
-        get('users/').then(response => {
-          const user = response.data.filter(user => user.username === username)[0];
+    if (username !== '') {
+      post('users/', { username })
+        .then(response => {
+          const user = response.data;
           setUser(user);
           if (isRememberMe) {
             localStorage.setItem('userId', user.id);
           }
+        })
+        .catch(err => {
+          get('users/').then(response => {
+            const user = response.data.filter(user => user.username === username)[0];
+            setUser(user);
+            if (isRememberMe) {
+              localStorage.setItem('userId', user.id);
+            }
+          });
         });
-      });
+    }
   };
 
   return (

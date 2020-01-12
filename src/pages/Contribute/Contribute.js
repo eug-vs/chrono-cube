@@ -3,6 +3,11 @@ import React from 'react';
 import {
   Typography,
   Button,
+  List,
+  ListItem,
+  Link,
+  Avatar,
+  Divider,
   makeStyles,
 } from "@material-ui/core";
 
@@ -13,8 +18,17 @@ import ContentSection from "../../components/ContentSection/ContentSection";
 const useStyles = makeStyles(theme => ({
   mono: {
     padding: theme.spacing(4),
-  }
+
+    '& .MuiAvatar-root': {
+      marginRight: theme.spacing(2),
+      width: theme.spacing(6),
+      height: theme.spacing(6),
+    }
+  },
 }));
+
+
+const developers = require('../../developers.json');
 
 
 const Contribute = () => {
@@ -84,10 +98,52 @@ const Contribute = () => {
             Report a bug
           </Button>
         </ContentSection>
+        <ContentSection sectionName="Developers">
+          <List>
+            {
+              developers.map(developer => {
+                const githubUrl = `https://github.com/${developer.username}`;
+                const avatarUrl = `${githubUrl}.png`;
+
+                return (
+                  <>
+                    <ListItem>
+                      <Link href={githubUrl}>
+                        <Avatar alt={developer.username} src={avatarUrl} />
+                      </Link>
+                      <div>
+                        <Link href={githubUrl}>
+                          <Typography>
+                            {developer.username}
+                          </Typography>
+                        </Link>
+                        <Typography color="textSecondary">
+                          {developer.role}
+                        </Typography>
+                      </div>
+                    </ListItem>
+                    <Divider variant="middle"/>
+                  </>
+                )
+              })
+            }
+            <ListItem>
+              <Avatar />
+              <Typography>You can be here!</Typography>
+            </ListItem>
+          </List>
+          <Button
+            variant="contained"
+            color="secondary"
+            size="large"
+            href="https://github.com/users/Eug-VS/projects/3"
+          >
+            Join us!
+          </Button>
+        </ContentSection>
       </div>
     </Window>
   );
-
 };
 
 

@@ -54,9 +54,10 @@ const SolutionCard = ({ data, removeThisCard }) => {
   };
 
   const handleDelete = () => {
-    del(`solutions/${data.id}/`);
+    del(`solutions/${data.id}/`).then(() => {
+      removeThisCard(data.id);
+    });
     handleClose();
-    removeThisCard(data.id);
   };
 
   return (

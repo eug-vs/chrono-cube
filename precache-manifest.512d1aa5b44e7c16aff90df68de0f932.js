@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "020e409013893a3797f05c1db8e45a05",
+    "revision": "04f6529f23e131f88f5157b45dcd97d5",
     "url": "/chrono-cube/index.html"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/chrono-cube/static/js/2.5db9a9f7.chunk.js.LICENSE"
   },
   {
-    "revision": "1d94db55b73c1c04348a",
-    "url": "/chrono-cube/static/js/main.f5e4a629.chunk.js"
+    "revision": "710f02f3a889669ee619",
+    "url": "/chrono-cube/static/js/main.f6193adc.chunk.js"
   },
   {
     "revision": "879c5d5c2c1cafaa543e",

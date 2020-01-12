@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/chrono-cube/precache-manifest.bc122b01827b012f6adc0c7b44e052df.js"
+  "/chrono-cube/precache-manifest.512d1aa5b44e7c16aff90df68de0f932.js"
 );
 
 self.addEventListener('message', (event) => {

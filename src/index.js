@@ -10,6 +10,7 @@ import Header from './components/Header/Header';
 import Timer from "./pages/Timer/Timer";
 import Scoreboard from "./pages/Scoreboard/Scoreboard";
 import Contribute from "./pages/Contribute/Contribute";
+import Profile from "./pages/Profile/Profile";
 
 
 const App = () => {
@@ -28,19 +29,17 @@ const App = () => {
           />
         );
 
+      case 'profile':
+        return <Profile/>;
+
       case 'scoreboard':
-        return (<Scoreboard />);
+        return <Scoreboard />;
 
       case 'contribute':
-        return (<Contribute />);
+        return <Contribute />;
 
       default:
-        return (
-          <p>
-            This text is rendered outside of <code>Header</code> component, but
-            interacting with <code>Header</code> can influence content of this page!
-          </p>
-        )
+        return <Contribute />;
     }
   };
 

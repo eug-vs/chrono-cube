@@ -114,13 +114,12 @@ const Contribute = () => {
             {
               developers.map(developer => {
                 const githubUrl = `https://github.com/${developer.username}`;
-                const avatarUrl = `${githubUrl}.png`;
 
                 return (
-                  <>
-                    <ListItem key={developer.username}>
+                  <div key={developer.username}>
+                    <ListItem>
                       <Link href={githubUrl}>
-                        <Avatar alt={developer.username} src={avatarUrl} />
+                        <Avatar alt={developer.username} src={`${githubUrl}.png`} />
                       </Link>
                       <div>
                         <Link href={githubUrl}>
@@ -131,8 +130,8 @@ const Contribute = () => {
                         </Typography>
                       </div>
                     </ListItem>
-                    <Divider variant="middle"/>
-                  </>
+                    <Divider variant="middle" />
+                  </div>
                 )
               })
             }

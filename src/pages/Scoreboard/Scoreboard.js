@@ -28,18 +28,16 @@ const Scoreboard = () => {
 
   const updateSolutions = () => {
     get('scoreboard/').then(response => {
-      setTimeout(() => {
         setSolutions(response.data);
-      }, 300);
     });
   };
 
-  const removeSolution = (id) => {
-    setSolutions(solutions.filter((solution => solution.id !== id)));
+  const removeSolution = id => {
+    updateSolutions();
   };
 
   useEffect(() => {
-    updateSolutions();
+    setTimeout(updateSolutions, 300);
   }, []);
 
   const renderItem = ({ index, style }) => {

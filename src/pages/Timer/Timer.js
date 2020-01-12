@@ -8,7 +8,7 @@ import TimerButton from "./TimerButton/TimerButton";
 import SmartList from "../../components/SmartList/SmartList";
 import SolutionCard from "../../components/SolutionCard/SolutionCard";
 
-import { Typography, Button, makeStyles } from "@material-ui/core";
+import { Button, makeStyles } from "@material-ui/core";
 
 
 const useStyles = makeStyles(theme => ({
@@ -20,13 +20,8 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Timer = ({ recentSolutions, setRecentSolutions, setPage }) => {
+const Timer = ({ user, recentSolutions, setRecentSolutions, setPage }) => {
   const classes = useStyles();
-
-  const user = {
-    id: null,
-    username: 'anonymous',
-  };
 
   const registerResult = result => {
     const solution = { author_id: user.id, result };
@@ -37,6 +32,10 @@ const Timer = ({ recentSolutions, setRecentSolutions, setPage }) => {
 
   const handleLearnMore = () => {
     setPage('contribute');
+  };
+
+  const handleLogin = () => {
+    setPage('profile');
   };
 
   const removeSolution = (id) => {
@@ -66,6 +65,12 @@ const Timer = ({ recentSolutions, setRecentSolutions, setPage }) => {
             </p>
             <Button variant="contained" color="secondary" onClick={handleLearnMore}> Learn more </Button>
           </ContentSection>
+          {user.id === null &&
+          <ContentSection sectionName="Log into an account">
+            <p> Tell us your name so we can track your progress</p>
+            <Button variant="contained" color="secondary" onClick={handleLogin} size="large"> Login </Button>
+          </ContentSection>
+          }
           <TimerButton registerResult={registerResult} />
         </div>
       </Window>

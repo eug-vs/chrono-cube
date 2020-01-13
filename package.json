@@ -16,7 +16,8 @@
     "react-scripts": "3.3.0",
     "react-virtualized-auto-sizer": "^1.0.2",
     "react-window": "^1.8.5",
-    "typeface-roboto": "0.0.75"
+    "typeface-roboto": "0.0.75",
+    "typescript": "^3.7.4"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -63,12 +63,12 @@ const Timer = ({ user, recentSolutions, setRecentSolutions, setPage }) => {
               Every speedcuber will benefit
               from using it - both amateur and professional!
             </p>
-            <Button variant="contained" color="secondary" onClick={handleLearnMore}> Learn more </Button>
+            <Button variant="contained" color="primary" onClick={handleLearnMore}> Learn more </Button>
           </ContentSection>
           {user.id === null &&
           <ContentSection sectionName="Log into an account">
             <p> Tell us your name so we can track your progress</p>
-            <Button variant="contained" color="secondary" onClick={handleLogin} size="large"> Login </Button>
+            <Button variant="contained" color="primary" onClick={handleLogin} size="large"> Login </Button>
           </ContentSection>
           }
           <TimerButton registerResult={registerResult} />

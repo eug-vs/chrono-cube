@@ -8,9 +8,8 @@ const useStyles = makeStyles(theme => ({
     position: 'absolute',
     display: 'flex',
     flexDirection: 'column',
-    background: theme.palette.background.elevation,
     overflowY: 'auto',
-    scrollbarColor: `${theme.palette.primary.dark} ${theme.palette.primary.light}`,
+    scrollbarColor: `${theme.palette.secondary.main} ${theme.palette.secondary.light}`,
   }
 }));
 
@@ -20,7 +19,7 @@ const WindowSurface = ({ size, position, children }) => {
 
   return (
     <Paper
-      elevation={3}
+      variant="outlined"
       style={{...size, ...position}}
       className={classes.surface}
     >

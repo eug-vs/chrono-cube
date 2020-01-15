@@ -67,7 +67,7 @@ const Registration = ({ setUser }) => {
           />
         </Grid>
         <Grid item>
-          <Button variant="contained" color="secondary" size="large" onClick={handleSubmit}>
+          <Button variant="contained" color="primary" size="large" onClick={handleSubmit}>
             Submit!
           </Button>
         </Grid>

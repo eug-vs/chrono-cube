@@ -8,7 +8,6 @@ import WindowSurface from "./WindowSurface/WindowSurface";
 const useStyles = makeStyles(theme => ({
   header: {
     padding: theme.spacing(1, 0, 1, 2),
-    background: theme.palette.background.elevation,
   },
 }));
 

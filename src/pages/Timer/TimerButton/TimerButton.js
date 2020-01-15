@@ -7,8 +7,8 @@ const useStyles = makeStyles(theme => ({
   root: {
     textAlign: 'center',
     padding: theme.spacing(5),
-    background: theme.palette.primary.main,
     marginTop: theme.spacing(10),
+    background: theme.palette.background.elevation1,
   },
 }));
 
@@ -87,7 +87,7 @@ const TimerButton = ({ registerResult }) => {
   };
 
   return (
-    <Paper elevation={3} className={classes.root}>
+    <Paper variant="outlined" className={classes.root}>
       <Typography variant="h1"> {time} </Typography>
       <Typography variant="h5" color={helperColor()}>
         {composeHelperText()}

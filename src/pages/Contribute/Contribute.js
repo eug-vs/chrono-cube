@@ -47,7 +47,7 @@ const Contribute = () => {
           </p>
           <Button
             variant="contained"
-            color="secondary"
+            color="primary"
             startIcon={<TrendingUpIcon />}
             href="https://github.com/users/Eug-VS/projects/3"
           >
@@ -94,7 +94,7 @@ const Contribute = () => {
           </p>
           <Button
             variant="contained"
-            color="secondary"
+            color="primary"
             startIcon={<NewReleasesIcon />}
             href="https://github.com/Eug-VS/chrono-cube/issues/new"
           >
@@ -102,7 +102,7 @@ const Contribute = () => {
           </Button>
           <Button
             variant="contained"
-            color="secondary"
+            color="primary"
             startIcon={<BugReportIcon />}
             href="https://github.com/Eug-VS/chrono-cube/issues/new"
           >
@@ -142,7 +142,7 @@ const Contribute = () => {
           </List>
           <Button
             variant="contained"
-            color="secondary"
+            color="primary"
             size="large"
             href="https://github.com/users/Eug-VS/projects/3"
           >

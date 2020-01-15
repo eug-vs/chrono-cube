@@ -2,13 +2,13 @@ import React from 'react';
 
 import { post } from '../../requests';
 
-import Window from "../../components/Window/Window";
-import ContentSection from "../../components/ContentSection/ContentSection";
-import TimerButton from "./TimerButton/TimerButton";
-import SmartList from "../../components/SmartList/SmartList";
-import SolutionCard from "../../components/SolutionCard/SolutionCard";
+import Window from '../../components/Window/Window';
+import ContentSection from '../../components/ContentSection/ContentSection';
+import TimerButton from './TimerButton/TimerButton';
+import SmartList from '../../components/SmartList/SmartList';
+import SolutionCard from '../../components/SolutionCard/SolutionCard';
 
-import { Button, makeStyles } from "@material-ui/core";
+import { Button, makeStyles } from '@material-ui/core';
 
 
 const useStyles = makeStyles(theme => ({

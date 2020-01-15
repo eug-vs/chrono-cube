@@ -5,14 +5,14 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/core/styles';
 import 'typeface-roboto';
 
-import theme from "./theme";
+import theme from './theme';
 import Header from './components/Header/Header';
-import Timer from "./pages/Timer/Timer";
-import Scoreboard from "./pages/Scoreboard/Scoreboard";
-import Contribute from "./pages/Contribute/Contribute";
-import Profile from "./pages/Profile/Profile";
+import Timer from './pages/Timer/Timer';
+import Scoreboard from './pages/Scoreboard/Scoreboard';
+import Contribute from './pages/Contribute/Contribute';
+import Profile from './pages/Profile/Profile';
 
-import { get } from "./requests";
+import { get } from './requests';
 
 
 const App = () => {
@@ -65,5 +65,5 @@ const App = () => {
   );
 };
 
-document.body.style.overflow = "hidden";
+document.body.style.overflow = 'hidden';
 ReactDOM.render(<App />, document.getElementById('root'));

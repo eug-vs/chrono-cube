@@ -17,7 +17,6 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 
 const useStyles = makeStyles(theme => ({
   logo: {
-    color: theme.palette.secondary.main,
     margin: theme.spacing(0, 3, 0, 3),
   },
   tab: {

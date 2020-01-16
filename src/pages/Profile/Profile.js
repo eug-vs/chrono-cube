@@ -60,7 +60,7 @@ const Profile = ({ user, setUser }) => {
             <ContentSection sectionName={`Welcome back, ${user.username}!`}>
               <p> Total amount of solutions: {profileSolutions.length} </p>
               <p> You can always log out from your account! </p>
-              <Button variant="contained" color="secondary" onClick={handleLogout}>
+              <Button variant="contained" onClick={handleLogout}>
                 Logout
               </Button>
             </ContentSection>

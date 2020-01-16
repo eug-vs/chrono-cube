@@ -8,7 +8,6 @@ const useStyles = makeStyles(theme => ({
     position: 'absolute',
     display: 'flex',
     flexDirection: 'column',
-    background: theme.palette.background.elevation,
     overflowY: 'auto',
     scrollbarColor: `${theme.palette.primary.dark} ${theme.palette.primary.light}`,
   }

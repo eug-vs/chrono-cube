@@ -54,7 +54,6 @@ const Registration = ({ setUser }) => {
         <Grid item>
           <TextField
             variant="outlined"
-            color="secondary"
             label="Username"
             value={username}
             onChange={handleChange}
@@ -62,12 +61,12 @@ const Registration = ({ setUser }) => {
         </Grid>
         <Grid item>
           <FormControlLabel
-            control={<Checkbox color="secondary" onChange={handleCheck} />}
+            control={<Checkbox onChange={handleCheck} />}
             label="Remember me"
           />
         </Grid>
         <Grid item>
-          <Button variant="contained" color="secondary" size="large" onClick={handleSubmit}>
+          <Button variant="contained" size="large" onClick={handleSubmit}>
             Submit!
           </Button>
         </Grid>

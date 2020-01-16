@@ -30,6 +30,7 @@ const DATE_FORMAT = {
 const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(1),
+    background: theme.palette.background.elevation1,
 
     '& .MuiTypography-h3': {
       margin: theme.spacing(2),
@@ -60,7 +61,7 @@ const SolutionCard = ({ data, removeThisCard }) => {
   };
 
   return (
-    <Card elevation={5} className={classes.root}>
+    <Card className={classes.root}>
       <CardHeader
         avatar={
           author === 'anonymous'?

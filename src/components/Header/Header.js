@@ -16,8 +16,13 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 
 
 const useStyles = makeStyles(theme => ({
+  root: {
+    background: theme.palette.background.elevation1,
+    color: theme.palette.text.primary,
+  },
   logo: {
     margin: theme.spacing(0, 3, 0, 3),
+    color: theme.palette.primary.light,
   },
   tab: {
     '& .MuiTab-wrapper': {
@@ -47,7 +52,7 @@ const Header = ({ page, setPage }) => {
   };
 
   return (
-  <AppBar position="sticky">
+  <AppBar position="sticky" className={classes.root}>
     <Toolbar>
       <Typography variant="h4" className={classes.logo}>
         ChronoCube

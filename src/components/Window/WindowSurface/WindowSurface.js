@@ -19,7 +19,7 @@ const WindowSurface = ({ size, position, children }) => {
 
   return (
     <Paper
-      elevation={3}
+      variant="outlined"
       style={{...size, ...position}}
       className={classes.surface}
     >

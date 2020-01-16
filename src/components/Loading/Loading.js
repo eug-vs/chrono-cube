@@ -12,6 +12,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(1),
+    background: theme.palette.background.elevation1,
   },
 }));
 

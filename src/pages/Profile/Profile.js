@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import Window from "../../components/Window/Window";
+import Window from '../../components/Window/Window';
 
 import {
   Button,
   makeStyles,
-} from "@material-ui/core";
+} from '@material-ui/core';
 
-import Registration from "./Registration/Registration";
-import ContentSection from "../../components/ContentSection/ContentSection";
-import SmartList from "../../components/SmartList/SmartList";
+import Registration from './Registration/Registration';
+import ContentSection from '../../components/ContentSection/ContentSection';
+import SmartList from '../../components/SmartList/SmartList';
 
-import { get } from "../../requests";
-import SolutionCard from "../../components/SolutionCard/SolutionCard";
+import { get } from '../../requests';
+import SolutionCard from '../../components/SolutionCard/SolutionCard';
 
 
 const useStyles = makeStyles(theme => ({

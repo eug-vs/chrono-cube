@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { Paper, Typography } from '@material-ui/core';
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -19,21 +19,25 @@ const TimerButton = ({ registerResult }) => {
   const maxCountdown = 15000;
   const [time, setTime] = useState('00:00:00');
   const [mode, setMode] = useState('idle');
-  const [repeater, setRepeater] = useState(0);
 
   useEffect(()=> {
-    clearInterval(repeater);
     const timestamp = Date.now();
 
-    if (mode === 'countdown') setRepeater(setInterval(() => {
-      const timeDelta = maxCountdown - (Date.now() - timestamp);
-      if (timeDelta <= 0) setMode('over');
-      setTime(convertTimeToString(timeDelta));
-    }, 10));
+    if (mode === 'countdown') {
+      const repeater = setInterval(() => {
+        const timeDelta = maxCountdown - (Date.now() - timestamp);
+        if (timeDelta <= 0) setMode('over');
+        setTime(convertTimeToString(timeDelta));
+      }, 10);
+      return () => clearInterval(repeater);
+    }
 
-    if (mode === 'running') setRepeater(setInterval(() => {
-      setTime(convertTimeToString(Date.now() - timestamp));
-    }, 10));
+    if (mode === 'running') {
+      const repeater = setInterval(() => {
+        setTime(convertTimeToString(Date.now() - timestamp));
+      }, 10);
+      return () => clearInterval(repeater);
+    }
 
     if (mode === 'over') {
       setTime('00:00:00');
@@ -46,7 +50,6 @@ const TimerButton = ({ registerResult }) => {
   };
 
   const handleKeyUp = event => {
-    clearInterval(repeater);
     if (event.keyCode === SPACE) {
       if (mode === 'running') {
         registerResult(time);

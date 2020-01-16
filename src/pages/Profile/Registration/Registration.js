@@ -6,10 +6,10 @@ import {
   Checkbox,
   FormControlLabel,
   Grid,
-} from "@material-ui/core";
+} from '@material-ui/core';
 
-import ContentSection from "../../../components/ContentSection/ContentSection";
-import {get, post} from "../../../requests";
+import ContentSection from '../../../components/ContentSection/ContentSection';
+import {get, post} from '../../../requests';
 
 
 const Registration = ({ setUser }) => {

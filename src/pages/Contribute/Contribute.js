@@ -9,14 +9,14 @@ import {
   Avatar,
   Divider,
   makeStyles,
-} from "@material-ui/core";
+} from '@material-ui/core';
 
 import TrendingUpIcon from '@material-ui/icons/TrendingUp';
 import BugReportIcon from '@material-ui/icons/BugReport';
 import NewReleasesIcon from '@material-ui/icons/NewReleases';
 
-import Window from "../../components/Window/Window";
-import ContentSection from "../../components/ContentSection/ContentSection";
+import Window from '../../components/Window/Window';
+import ContentSection from '../../components/ContentSection/ContentSection';
 
 
 const useStyles = makeStyles(theme => ({

@@ -10,13 +10,13 @@ import {
   Grid,
   Menu,
   MenuItem,
-} from "@material-ui/core";
+} from '@material-ui/core';
 
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
 import TimerIcon from '@material-ui/icons/Timer';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
-import { del } from "../../requests";
+import { del } from '../../requests';
 
 
 const DATE_FORMAT = {

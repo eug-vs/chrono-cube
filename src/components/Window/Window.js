@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Typography, Divider, makeStyles } from "@material-ui/core";
+import { Typography, Divider, makeStyles } from '@material-ui/core';
 
-import WindowSurface from "./WindowSurface/WindowSurface";
+import WindowSurface from './WindowSurface/WindowSurface';
 
 
 const useStyles = makeStyles(theme => ({

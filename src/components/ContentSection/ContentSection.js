@@ -4,7 +4,7 @@ import {
   Typography,
   Divider,
   makeStyles
-} from "@material-ui/core";
+} from '@material-ui/core';
 
 
 const useStyles = makeStyles(theme => ({

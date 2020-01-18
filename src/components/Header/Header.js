@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
   },
   logo: {
     margin: theme.spacing(0, 3, 0, 3),
-    color: theme.palette.primary.light,
+    color: theme.palette.primary.main,
   },
   tab: {
     '& .MuiTab-wrapper': {

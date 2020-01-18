@@ -74,25 +74,17 @@ const TimerButton = ({ registerResult }) => {
 
   const composeHelperText = () => {
     switch (mode) {
-      case 'running': return '_';
+      case 'running': return 'Go fast!';
       case 'countdown': return 'Release SPACE to begin';
       case 'over': return 'You are too late!';
       default: return 'Hold SPACE to start countdown';
     }
   };
 
-  const helperColor = () => {
-    switch (mode) {
-      case 'running': return 'primary';
-      case 'over': return 'secondary';
-      default: return 'textSecondary';
-    }
-  };
-
   return (
     <Paper elevation={3} className={classes.root}>
       <Typography variant="h1"> {time} </Typography>
-      <Typography variant="h5" color={helperColor()}>
+      <Typography variant="h5" color="textSecondary">
         {composeHelperText()}
       </Typography>
     </Paper>

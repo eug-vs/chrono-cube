@@ -69,7 +69,7 @@ const Registration = ({ setUser }) => {
         <Grid item>
           <Button
             variant="contained"
-            color="primary"
+            color="secondary"
             size="large"
             onClick={handleSubmit}
           >

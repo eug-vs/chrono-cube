@@ -15,6 +15,8 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import TimerIcon from '@material-ui/icons/Timer';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import DeleteIcon from '@material-ui/icons/Delete';
+
 
 import { del } from '../../requests';
 
@@ -37,6 +39,11 @@ const useStyles = makeStyles(theme => ({
       color: theme.palette.primary.main,
     },
   },
+  menu: {
+    '& ul': {
+      background: theme.palette.background.elevation3,
+    }
+  }
 }));
 
 const SolutionCard = ({ data, removeThisCard }) => {
@@ -83,8 +90,12 @@ const SolutionCard = ({ data, removeThisCard }) => {
         open={Boolean(anchorEl)}
         keepMounted
         onClose={handleClose}
+        className={classes.menu}
       >
-        <MenuItem onClick={handleDelete}>Delete</MenuItem>
+        <MenuItem onClick={handleDelete}>
+          <DeleteIcon />
+          Delete
+        </MenuItem>
       </Menu>
       <CardContent>
         <Grid container direction="row" justify="center" alignItems="center">

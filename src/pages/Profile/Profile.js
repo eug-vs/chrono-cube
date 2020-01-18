@@ -62,7 +62,7 @@ const Profile = ({ user, setUser }) => {
               <p> You can always log out from your account! </p>
               <Button
                 variant="contained"
-                color="primary"
+                color="secondary"
                 onClick={handleLogout}
               >
                 Logout

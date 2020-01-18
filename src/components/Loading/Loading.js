@@ -22,7 +22,7 @@ const Loading = () => {
   return (
     <Card elevation={5} className={classes.root}>
       <CardHeader
-        avatar={(<CircularProgress />)}
+        avatar={(<CircularProgress color="secondary" />)}
         title="Loading"
         subheader="Please, wait."
       />

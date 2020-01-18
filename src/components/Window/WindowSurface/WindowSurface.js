@@ -9,7 +9,11 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
     overflowY: 'auto',
-    scrollbarColor: `${theme.palette.primary.dark} ${theme.palette.primary.light}`,
+    scrollbarColor: `${theme.palette.secondary.dark} ${theme.palette.secondary.light}`,
+
+    '& a.MuiTypography-root': {
+      color: theme.palette.primary.light,
+    },
   }
 }));
 

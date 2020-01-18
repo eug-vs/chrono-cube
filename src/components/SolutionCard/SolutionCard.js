@@ -34,6 +34,7 @@ const useStyles = makeStyles(theme => ({
 
     '& .MuiTypography-h3': {
       margin: theme.spacing(2),
+      color: theme.palette.primary.main,
     },
   },
 }));

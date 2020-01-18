@@ -55,6 +55,7 @@ const Registration = ({ setUser }) => {
           <TextField
             variant="outlined"
             label="Username"
+            color="secondary"
             value={username}
             onChange={handleChange}
           />
@@ -66,7 +67,12 @@ const Registration = ({ setUser }) => {
           />
         </Grid>
         <Grid item>
-          <Button variant="contained" size="large" onClick={handleSubmit}>
+          <Button
+            variant="contained"
+            color="primary"
+            size="large"
+            onClick={handleSubmit}
+          >
             Submit!
           </Button>
         </Grid>

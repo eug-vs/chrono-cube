@@ -12,7 +12,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(1),
-    background: theme.palette.background.elevation1,
+    background: theme.palette.background.elevation2,
   },
 }));
 
@@ -20,7 +20,7 @@ const Loading = () => {
   const classes = useStyles();
 
   return (
-    <Card elevation={5} className={classes.root}>
+    <Card elevation={3} className={classes.root}>
       <CardHeader
         avatar={(<CircularProgress color="secondary" />)}
         title="Loading"

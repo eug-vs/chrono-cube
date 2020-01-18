@@ -11,7 +11,7 @@ const theme = createMuiTheme({
     },
     background: {
       default: '#121212',
-      paper: '#121212',
+      paper: '#1e1e1e',
       elevation1: '#1e1e1e',
       elevation2: '#232323',
       elevation3: '#252525',

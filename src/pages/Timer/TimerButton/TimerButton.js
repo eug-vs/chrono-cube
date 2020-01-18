@@ -8,7 +8,7 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'center',
     padding: theme.spacing(5),
     marginTop: theme.spacing(10),
-    background: theme.palette.background.elevation1,
+    background: theme.palette.background.elevation2,
   },
 }));
 

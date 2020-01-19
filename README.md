@@ -2,7 +2,7 @@
 This repository is a frontend part of ChronoCube web application - an Open-Source
 professional timer for speecubing with simple UI, scoreboard, guides and statistics analysis.
 
-It is already deployed and available at https://eug-vs.github.io/chrono-cube/
+It is already deployed and available at https://eug-vs.github.io/chrono-cube/.
 
 ![screenshot](/docs/screenshots/app.png)
 
@@ -20,4 +20,4 @@ Development process is managed through GitHub project.
 
 # Contribute
 ChronoCube is an Open-Source project and anyone can contribute to it!
-Please, take your time to read [out contributing guideliens](/CONTRIBUTING.md).
+Please, take your time to read [out contributing guidelines](/CONTRIBUTING.md).

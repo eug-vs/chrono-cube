@@ -1,21 +1,23 @@
 # chrono-cube
-Frontend part of ChronoCube web application - 
-a professional timer for speecubing with simple UI, scoreboard, guides and statistics analysis.
+This repository is a frontend part of ChronoCube web application - an Open-Source
+professional timer for speecubing with simple UI, scoreboard, guides and statistics analysis.
 
+It is already deployed and available at https://eug-vs.github.io/chrono-cube/
+
+![screenshot](/docs/screenshots/app.png)
+
+# Track our progress
+Development process is managed through GitHub project.
+[Visit out project board!](https://github.com/users/Eug-VS/projects/3)
 
 # Technologies stack
+ We only use modern and most relevant technologies to achieve the best results! 
 - [React.js](https://reactjs.org/)
 - [Material UI components](https://material-ui.com/)
 
-# Getting started
-To run the project, you should have [Node Package Manager](https://www.npmjs.com/) installed. It's also recommended to use 
-[Node Version Manager](https://github.com/nvm-sh/nvm).
-
-1. `npm i` (shorthand for `npm install`) - install project dependencies. 
-2. `npm start` - run the project.
+ Special thanks to other Open-Source projects which made ChronoCube possible: 
+- [react-window](https://github.com/bvaughn/react-window)
 
 # Contribute
-[Contribute to ChronoCube](https://github.com/users/Eug-VS/projects/3)
-
-Recommended IDE - [WebStorm](https://www.jetbrains.com/webstorm/). It's also preferable to install 
-`Styled Components & Styled JSX` plugin.
+ChronoCube is an Open-Source project and anyone can contribute to it!
+Please, take your time to read [out contributing guideliens](/CONTRIBUTING.md).

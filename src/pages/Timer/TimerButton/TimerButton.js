@@ -74,7 +74,7 @@ const TimerButton = ({ registerResult }) => {
 
   const composeHelperText = () => {
     switch (mode) {
-      case 'running': return '_';
+      case 'running': return 'Go fast!';
       case 'countdown': return 'Release SPACE to begin';
       case 'over': return 'You are too late!';
       default: return 'Hold SPACE to start countdown';

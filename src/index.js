@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
-import CssBaseline from '@material-ui/core/CssBaseline';
 import {
   BenzinThemeProvider,
   Header,
 } from 'react-benzin-test';
+
 import 'typeface-roboto';
 
 import Timer from './pages/Timer/Timer';
@@ -71,7 +71,6 @@ const App = () => {
 
   return (
     <BenzinThemeProvider>
-      <CssBaseline/>
       <Header
         logo={{
           title: 'ChronoCube'

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { ThemeProvider } from '@material-ui/core/styles';
+import { BenzinThemeProvider } from 'react-benzin-test';
 import 'typeface-roboto';
 
 import theme from './theme';
@@ -57,11 +57,11 @@ const App = () => {
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <BenzinThemeProvider>
       <CssBaseline/>
       <Header page={page} setPage={setPage}/>
       <Page page={page} />
-    </ThemeProvider>
+    </BenzinThemeProvider>
   );
 };
 

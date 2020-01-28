@@ -8,8 +8,8 @@ import {
   Grid,
 } from '@material-ui/core';
 
-import ContentSection from '../../../components/ContentSection/ContentSection';
-import {get, post} from '../../../requests';
+import { ContentSection } from 'react-benzin-test';
+import { get, post } from '../../../requests';
 
 
 const Registration = ({ setUser }) => {
@@ -67,7 +67,7 @@ const Registration = ({ setUser }) => {
           />
         </Grid>
         <Grid item>
-          <Button variant="contained" color="secondary" size="large" onClick={handleSubmit}>
+          <Button variant="contained" color="secondary" onClick={handleSubmit}>
             Submit!
           </Button>
         </Grid>

@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 
-import { get } from '../../requests';
+import { Window, SmartList } from 'react-benzin-test';
 
-import SmartList from '../../components/SmartList/SmartList';
 import SolutionCard from '../../components/SolutionCard/SolutionCard';
 import Loading from '../../components/Loading/Loading';
-import Window from '../../components/Window/Window';
+
+import { get } from '../../requests';
 
 
 const useStyles = makeStyles(theme => ({

@@ -2,15 +2,21 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { BenzinThemeProvider } from 'react-benzin-test';
+import {
+  BenzinThemeProvider,
+  Header,
+} from 'react-benzin-test';
 import 'typeface-roboto';
 
-import theme from './theme';
-import Header from './components/Header/Header';
 import Timer from './pages/Timer/Timer';
 import Scoreboard from './pages/Scoreboard/Scoreboard';
 import Contribute from './pages/Contribute/Contribute';
 import Profile from './pages/Profile/Profile';
+
+import TimerIcon from '@material-ui/icons/Timer';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import AssignmentIcon from '@material-ui/icons/Assignment';
+import GitHubIcon from '@material-ui/icons/GitHub';
 
 import { get } from './requests';
 
@@ -20,6 +26,13 @@ const App = () => {
   const [page, setPage] = useState('app');
   const [user, setUser] = useState({ username: 'anonymous', id: null });
   const [recentSolutions, setRecentSolutions] = useState([]);
+
+  const headerContents = {
+    app: (<TimerIcon />),
+    profile: (<AccountCircleIcon />),
+    scoreboard: (<AssignmentIcon />),
+    contribute: (<GitHubIcon />),
+  };
 
   useEffect(() => {
     const userId = +localStorage.getItem('userId');
@@ -59,7 +72,13 @@ const App = () => {
   return (
     <BenzinThemeProvider>
       <CssBaseline/>
-      <Header page={page} setPage={setPage}/>
+      <Header
+        logo={{
+          title: 'ChronoCube'
+        }}
+        contents={headerContents}
+        page={page}
+        setPage={setPage}/>
       <Page page={page} />
     </BenzinThemeProvider>
   );

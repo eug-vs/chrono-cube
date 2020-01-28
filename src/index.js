@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import {
   BenzinThemeProvider,
   Header,
-} from 'react-benzin-test';
+} from 'react-benzin';
 
 import 'typeface-roboto';
 

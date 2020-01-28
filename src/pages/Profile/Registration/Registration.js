@@ -8,7 +8,7 @@ import {
   Grid,
 } from '@material-ui/core';
 
-import { ContentSection } from 'react-benzin-test';
+import { ContentSection } from 'react-benzin';
 import { get, post } from '../../../requests';
 
 

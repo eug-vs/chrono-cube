@@ -15,7 +15,7 @@ import TrendingUpIcon from '@material-ui/icons/TrendingUp';
 import BugReportIcon from '@material-ui/icons/BugReport';
 import NewReleasesIcon from '@material-ui/icons/NewReleases';
 
-import { Window, ContentSection } from 'react-benzin-test';
+import { Window, ContentSection } from 'react-benzin';
 
 
 const useStyles = makeStyles(theme => ({

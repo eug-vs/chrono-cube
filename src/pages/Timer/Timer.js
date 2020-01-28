@@ -6,7 +6,7 @@ import {
   Window,
   ContentSection,
   SmartList,
-} from 'react-benzin-test';
+} from 'react-benzin';
 
 import TimerButton from './TimerButton/TimerButton';
 import SolutionCard from '../../components/SolutionCard/SolutionCard';

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 
-import { Window, SmartList } from 'react-benzin-test';
+import { Window, SmartList } from 'react-benzin';
 
 import SolutionCard from '../../components/SolutionCard/SolutionCard';
 import Loading from '../../components/Loading/Loading';

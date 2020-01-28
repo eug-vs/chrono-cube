@@ -10,7 +10,7 @@ import {
   Window,
   ContentSection,
   SmartList,
-} from 'react-benzin-test';
+} from 'react-benzin';
 
 import SolutionCard from '../../components/SolutionCard/SolutionCard';
 

@@ -7,7 +7,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     textAlign: 'center',
     padding: theme.spacing(5),
-    background: theme.palette.primary.main,
+    background: theme.palette.background.elevation3,
     marginTop: theme.spacing(10),
   },
 }));
@@ -74,7 +74,7 @@ const TimerButton = ({ registerResult }) => {
 
   const composeHelperText = () => {
     switch (mode) {
-      case 'running': return '_';
+      case 'running': return 'Go fast!';
       case 'countdown': return 'Release SPACE to begin';
       case 'over': return 'You are too late!';
       default: return 'Hold SPACE to start countdown';
@@ -90,7 +90,7 @@ const TimerButton = ({ registerResult }) => {
   };
 
   return (
-    <Paper elevation={3} className={classes.root}>
+    <Paper className={classes.root}>
       <Typography variant="h1"> {time} </Typography>
       <Typography variant="h5" color={helperColor()}>
         {composeHelperText()}

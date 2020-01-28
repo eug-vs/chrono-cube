@@ -15,8 +15,7 @@ import TrendingUpIcon from '@material-ui/icons/TrendingUp';
 import BugReportIcon from '@material-ui/icons/BugReport';
 import NewReleasesIcon from '@material-ui/icons/NewReleases';
 
-import Window from '../../components/Window/Window';
-import ContentSection from '../../components/ContentSection/ContentSection';
+import { Window, ContentSection } from 'react-benzin';
 
 
 const useStyles = makeStyles(theme => ({
@@ -47,7 +46,7 @@ const Contribute = () => {
           </p>
           <Button
             variant="contained"
-            color="secondary"
+            color="primary"
             startIcon={<TrendingUpIcon />}
             href="https://github.com/users/Eug-VS/projects/3"
           >
@@ -94,7 +93,7 @@ const Contribute = () => {
           </p>
           <Button
             variant="contained"
-            color="secondary"
+            color="primary"
             startIcon={<NewReleasesIcon />}
             href="https://github.com/Eug-VS/chrono-cube/issues/new"
           >
@@ -102,7 +101,7 @@ const Contribute = () => {
           </Button>
           <Button
             variant="contained"
-            color="secondary"
+            color="primary"
             startIcon={<BugReportIcon />}
             href="https://github.com/Eug-VS/chrono-cube/issues/new"
           >
@@ -142,7 +141,7 @@ const Contribute = () => {
           </List>
           <Button
             variant="contained"
-            color="secondary"
+            color="primary"
             size="large"
             href="https://github.com/users/Eug-VS/projects/3"
           >

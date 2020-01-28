@@ -15,6 +15,7 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import TimerIcon from '@material-ui/icons/Timer';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 import { del } from '../../requests';
 
@@ -30,11 +31,16 @@ const DATE_FORMAT = {
 const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(1),
+    background: theme.palette.background.elevation2,
 
     '& .MuiTypography-h3': {
-      color: theme.palette.secondary.main,
       margin: theme.spacing(2),
     },
+  },
+  menu: {
+    '& ul': {
+      background: theme.palette.background.elevation3,
+    }
   },
 }));
 
@@ -61,7 +67,7 @@ const SolutionCard = ({ data, removeThisCard }) => {
   };
 
   return (
-    <Card elevation={5} className={classes.root}>
+    <Card className={classes.root}>
       <CardHeader
         avatar={
           author === 'anonymous'?
@@ -82,8 +88,12 @@ const SolutionCard = ({ data, removeThisCard }) => {
         open={Boolean(anchorEl)}
         keepMounted
         onClose={handleClose}
+        className={classes.menu}
       >
-        <MenuItem onClick={handleDelete}>Delete</MenuItem>
+        <MenuItem onClick={handleDelete}>
+          <DeleteIcon />
+          Delete
+        </MenuItem>
       </Menu>
       <CardContent>
         <Grid container direction="row" justify="center" alignItems="center">
@@ -91,7 +101,7 @@ const SolutionCard = ({ data, removeThisCard }) => {
             <TimerIcon/>
           </Grid>
           <Grid item>
-            <Typography variant="h3">
+            <Typography variant="h3" color="primary">
               { data.result }
             </Typography>
           </Grid>

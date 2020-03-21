@@ -6,7 +6,6 @@ import {
   List,
   ListItem,
   Link,
-  Avatar,
   Divider,
   makeStyles,
 } from '@material-ui/core';
@@ -16,6 +15,7 @@ import BugReportIcon from '@material-ui/icons/BugReport';
 import NewReleasesIcon from '@material-ui/icons/NewReleases';
 
 import { Window, ContentSection } from 'react-benzin';
+import GithubAvatar, { getUserGithubUrl } from '../../components/GithubAvatar/GithubAvatar';
 
 import developers from '../../developers.json';
 
@@ -111,31 +111,23 @@ const Contribute: React.FC = () => {
         <ContentSection sectionName="Developers">
           <List>
             {
-              developers.map(developer => {
-                const githubUrl = `https://github.com/${developer.username}`;
-
-                return (
-                  <div key={developer.username}>
-                    <ListItem>
-                      <Link href={githubUrl}>
-                        <Avatar alt={developer.username} src={`${githubUrl}.png`} />
-                      </Link>
-                      <div>
-                        <Link href={githubUrl}>
-                          {developer.username}
-                        </Link>
-                        <Typography component="div" color="textSecondary">
-                          {developer.role}
-                        </Typography>
-                      </div>
-                    </ListItem>
-                    <Divider variant="middle" />
-                  </div>
-                )
-              })
+              developers.map(developer => (
+                <div key={developer.username}>
+                  <ListItem>
+                    <GithubAvatar username={developer.username} />
+                    <div>
+                      <Link href={getUserGithubUrl(developer.username)}>{developer.username}</Link>
+                      <Typography component="div" color="textSecondary">
+                        {developer.role}
+                      </Typography>
+                    </div>
+                  </ListItem>
+                  <Divider variant="middle" />
+                </div>
+              ))
             }
             <ListItem>
-              <Avatar />
+              <GithubAvatar username="anonymous" />
               You can be here!
             </ListItem>
           </List>

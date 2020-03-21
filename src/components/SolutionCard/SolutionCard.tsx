@@ -6,7 +6,6 @@ import {
   CardHeader,
   CardContent,
   IconButton,
-  Avatar,
   Grid,
   Menu,
   MenuItem,
@@ -18,6 +17,7 @@ import TimerIcon from '@material-ui/icons/Timer';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import DeleteIcon from '@material-ui/icons/Delete';
 
+import GithubAvatar from '../GithubAvatar/GithubAvatar';
 import { del } from '../../requests';
 
 
@@ -77,12 +77,7 @@ const SolutionCard: React.FC<PropTypes> = ({ data, removeThisCard }) => {
   return (
     <Card className={classes.root}>
       <CardHeader
-        avatar={
-          author === 'anonymous'?
-            (<Avatar/>)
-            :
-            (<Avatar>{author[0].toUpperCase()}</Avatar>)
-        }
+        avatar={<GithubAvatar username={author} />}
         title={author}
         subheader={date.toLocaleString('default', DATE_FORMAT)}
         action={

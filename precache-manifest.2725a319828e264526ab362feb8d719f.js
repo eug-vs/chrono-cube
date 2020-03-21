@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "04f6529f23e131f88f5157b45dcd97d5",
+    "revision": "d8ef4353a77e8c81d565b8dbd82c84fd",
     "url": "/chrono-cube/index.html"
   },
   {
-    "revision": "18787f67050600a44268",
-    "url": "/chrono-cube/static/css/2.b981f2fb.chunk.css"
+    "revision": "befa13d58049e28ad217",
+    "url": "/chrono-cube/static/css/2.96d5bacd.chunk.css"
   },
   {
-    "revision": "18787f67050600a44268",
-    "url": "/chrono-cube/static/js/2.5db9a9f7.chunk.js"
+    "revision": "befa13d58049e28ad217",
+    "url": "/chrono-cube/static/js/2.259369a5.chunk.js"
   },
   {
-    "revision": "37ef80829e57f4a0c2aa4bfe70fe2cf3",
-    "url": "/chrono-cube/static/js/2.5db9a9f7.chunk.js.LICENSE"
+    "revision": "3adc01bea76e7956dc3633ee898f6936",
+    "url": "/chrono-cube/static/js/2.259369a5.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "710f02f3a889669ee619",
-    "url": "/chrono-cube/static/js/main.f6193adc.chunk.js"
+    "revision": "a56633da407cd9d61916",
+    "url": "/chrono-cube/static/js/main.3ec52eb7.chunk.js"
   },
   {
-    "revision": "879c5d5c2c1cafaa543e",
-    "url": "/chrono-cube/static/js/runtime-main.82982f60.js"
+    "revision": "78c080c78a77d5df4703",
+    "url": "/chrono-cube/static/js/runtime-main.710d77d3.js"
   },
   {
     "revision": "5cb7edfceb233100075dc9a1e12e8da3",

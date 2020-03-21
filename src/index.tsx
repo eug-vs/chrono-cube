@@ -5,6 +5,7 @@ import {
   BenzinThemeProvider,
   Header,
 } from 'react-benzin';
+import { User, Solution } from './types';
 
 import 'typeface-roboto';
 
@@ -20,15 +21,11 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 
 import { get } from './requests';
 
-interface User {
-  username: string;
-  id: number | null;
-}
 
 const App: React.FC = () => {
   const [page, setPage] = useState<string>('app');
   const [user, setUser] = useState<User>({ username: 'anonymous', id: null });
-  const [recentSolutions, setRecentSolutions] = useState([]);
+  const [recentSolutions, setRecentSolutions] = useState<Solution[]>([]);
 
   const headerContents = {
     app: (<TimerIcon />),

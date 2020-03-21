@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 import { Window, SmartList } from 'react-benzin';
+import { Solution } from '../../types';
 
 import SolutionCard from '../../components/SolutionCard/SolutionCard';
 import Loading from '../../components/Loading/Loading';
@@ -22,9 +23,16 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Scoreboard = () => {
+
+interface RenderPropTypes {
+  index: number;
+  style: React.CSSProperties;
+}
+
+
+const Scoreboard: React.FC = () => {
   const classes = useStyles();
-  const [solutions, setSolutions] = useState([]);
+  const [solutions, setSolutions] = useState<Solution[]>([]);
 
   const updateSolutions = () => {
     get('scoreboard/').then(response => {
@@ -32,7 +40,7 @@ const Scoreboard = () => {
     });
   };
 
-  const removeSolution = id => {
+  const removeSolution = (id: number) => {
     updateSolutions();
   };
 
@@ -40,7 +48,7 @@ const Scoreboard = () => {
     setTimeout(updateSolutions, 300);
   }, []);
 
-  const renderItem = ({ index, style }) => {
+  const renderItem: React.FC<RenderPropTypes> = ({ index, style }) => {
     return (
       <div style={style} className={classes.cell}>
         <SolutionCard data={solutions[index]} removeThisCard={removeSolution}/>

@@ -10,7 +10,7 @@ interface PropTypes {
 }
 
 const githubUrl = 'https://github.com/';
-const getUserGithubUrl = (username: string) => githubUrl + username;
+const getUserGithubUrl = (username: string): string => githubUrl + username;
 
 const GithubAvatar: React.FC<PropTypes> = ({ username }) => {
   if (username === 'anonymous') return <Avatar/>;

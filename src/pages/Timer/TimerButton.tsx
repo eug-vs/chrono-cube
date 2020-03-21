@@ -12,13 +12,21 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const TimerButton = ({ registerResult }) => {
+
+interface PropTypes {
+  registerResult: (result: string) => void;
+}
+
+type Mode = 'idle' | 'countdown' | 'running' | 'over';
+
+
+const TimerButton: React.FC<PropTypes> = ({ registerResult }) => {
   const classes = useStyles();
 
   const SPACE = 32;
   const maxCountdown = 15000;
-  const [time, setTime] = useState('00:00:00');
-  const [mode, setMode] = useState('idle');
+  const [time, setTime] = useState<string>('00:00:00');
+  const [mode, setMode] = useState<Mode>('idle');
 
   useEffect(()=> {
     const timestamp = Date.now();
@@ -44,12 +52,12 @@ const TimerButton = ({ registerResult }) => {
     }
   }, [mode]);
 
-  const handleKeyPress = event => {
+  const handleKeyPress = (event: KeyboardEvent): void => {
     event.preventDefault();
     if (event.keyCode === SPACE && mode === 'idle' ) setMode('countdown');
   };
 
-  const handleKeyUp = event => {
+  const handleKeyUp = (event: KeyboardEvent): void => {
     if (event.keyCode === SPACE) {
       if (mode === 'running') {
         registerResult(time);
@@ -99,7 +107,7 @@ const TimerButton = ({ registerResult }) => {
   );
 };
 
-const convertTimeToString = timeDelta => {
+const convertTimeToString = (timeDelta: number): string => {
   let resultTime = '';
 
   const minute = Math.floor(timeDelta / 60000);

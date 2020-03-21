@@ -10,3 +10,7 @@ export interface Solution {
   author: User;
 }
 
+export interface Developer {
+  username: string;
+  role: string;
+}

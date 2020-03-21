@@ -16,6 +16,7 @@ import BugReportIcon from '@material-ui/icons/BugReport';
 import NewReleasesIcon from '@material-ui/icons/NewReleases';
 
 import { Window, ContentSection } from 'react-benzin';
+import { Developer } from '../../types';
 
 
 const useStyles = makeStyles(theme => ({
@@ -31,10 +32,10 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-const developers = require('../../developers.json');
+const developers: Developer[] = require('../../developers.json');
 
 
-const Contribute = () => {
+const Contribute: React.FC = () => {
   const classes = useStyles();
 
   return (

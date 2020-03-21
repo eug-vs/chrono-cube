@@ -39,9 +39,16 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
+      - add_ssh_keys:
+          fingerprints:
+            - "19:b9:a4:c7:83:51:7c:6e:ea:d3:7e:42:d9:f2:bc:a1"
+
       - run:
-          name: Authenticate with registry
-          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
+          name: Configure github user
+          command: |
+            git config user.email "eug-vs@keemail.me"
+            git config user.name "eug-vs"
+
       - run:
           name: Deploy package
           command: npm run deploy

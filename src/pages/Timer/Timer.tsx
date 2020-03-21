@@ -37,7 +37,7 @@ const Timer: React.FC<PropTypes> = ({ user, recentSolutions, setRecentSolutions,
   const classes = useStyles();
 
   const registerResult = (result: string): void => {
-    const solution = { author_id: user.id, result };
+    const solution = { 'author_id': user.id, result };
     post('solutions/', solution).then(response => {
       setRecentSolutions([response.data].concat(recentSolutions));
     });

@@ -37,14 +37,14 @@ const TimerButton: React.FC<PropTypes> = ({ registerResult }) => {
         if (timeDelta <= 0) setMode('over');
         setTime(convertTimeToString(timeDelta));
       }, 10);
-      return () => clearInterval(repeater);
+      return (): void => clearInterval(repeater);
     }
 
     if (mode === 'running') {
       const repeater = setInterval(() => {
         setTime(convertTimeToString(Date.now() - timestamp));
       }, 10);
-      return () => clearInterval(repeater);
+      return (): void => clearInterval(repeater);
     }
 
     if (mode === 'over') {
@@ -74,13 +74,13 @@ const TimerButton: React.FC<PropTypes> = ({ registerResult }) => {
     window.addEventListener('keyup', handleKeyUp);
     window.addEventListener('keypress', handleKeyPress);
 
-    return () => {
+    return (): void => {
       window.removeEventListener('keyup', handleKeyUp);
       window.removeEventListener('keypress', handleKeyPress);
     };
   });
 
-  const composeHelperText = () => {
+  const composeHelperText = (): string => {
     switch (mode) {
       case 'running': return 'Go fast!';
       case 'countdown': return 'Release SPACE to begin';
@@ -89,7 +89,7 @@ const TimerButton: React.FC<PropTypes> = ({ registerResult }) => {
     }
   };
 
-  const helperColor = () => {
+  const helperColor = (): 'primary' | 'secondary' | 'textSecondary' => {
     switch (mode) {
       case 'running': return 'primary';
       case 'over': return 'secondary';

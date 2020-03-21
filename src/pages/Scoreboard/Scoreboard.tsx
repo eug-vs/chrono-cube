@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 import { Window, SmartList } from 'react-benzin';
-import { Solution } from '../../types';
+import { Solution, RenderPropTypes } from '../../types';
 
 import SolutionCard from '../../components/SolutionCard/SolutionCard';
 import Loading from '../../components/Loading/Loading';
@@ -22,12 +22,6 @@ const useStyles = makeStyles(theme => ({
     }
   }
 }));
-
-
-interface RenderPropTypes {
-  index: number;
-  style: React.CSSProperties;
-}
 
 
 const Scoreboard: React.FC = () => {

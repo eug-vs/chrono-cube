@@ -5,12 +5,13 @@ import {
   makeStyles,
 } from '@material-ui/core';
 
-import Registration from './Registration/Registration';
+import Registration from './Registration';
 import {
   Window,
   ContentSection,
   SmartList,
 } from 'react-benzin';
+import { User, Solution, RenderPropTypes } from '../../types';
 
 import SolutionCard from '../../components/SolutionCard/SolutionCard';
 
@@ -27,10 +28,16 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-const Profile = ({ user, setUser }) => {
+interface PropTypes {
+  user: User;
+  setUser: (user: User) => void;
+}
+
+
+const Profile: React.FC<PropTypes> = ({ user, setUser }) => {
   const classes = useStyles();
 
-  const [profileSolutions, setProfileSolutions] = useState([]);
+  const [profileSolutions, setProfileSolutions] = useState<Solution[]>([]);
 
   const handleLogout = () => {
     setUser({ username: 'anonymous', id: null });
@@ -43,11 +50,11 @@ const Profile = ({ user, setUser }) => {
     });
   }, [user]);
 
-  const removeSolution = (id) => {
+  const removeSolution = (id: number): void => {
     setProfileSolutions(profileSolutions.filter((solution => solution.id !== id)));
   };
 
-  const renderItem = ({ index, style }) => {
+  const renderItem: React.FC<RenderPropTypes> = ({ index, style }) => {
     return (
       <div style={style} className={classes.cell}>
         <SolutionCard data={profileSolutions[index]} removeThisCard={removeSolution} />

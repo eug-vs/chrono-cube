@@ -10,3 +10,8 @@ export interface Solution {
   author: User;
 }
 
+interface RenderPropTypes {
+  index: number;
+  style: React.CSSProperties;
+}
+

@@ -16,8 +16,8 @@ import BugReportIcon from '@material-ui/icons/BugReport';
 import NewReleasesIcon from '@material-ui/icons/NewReleases';
 
 import { Window, ContentSection } from 'react-benzin';
-import { Developer } from '../../types';
 
+import developers from '../../developers.json';
 
 const useStyles = makeStyles(theme => ({
   mono: {
@@ -32,7 +32,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-const developers: Developer[] = require('../../developers.json');
 
 
 const Contribute: React.FC = () => {

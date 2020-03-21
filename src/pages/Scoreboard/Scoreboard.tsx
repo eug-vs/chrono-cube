@@ -34,13 +34,13 @@ const Scoreboard: React.FC = () => {
   const classes = useStyles();
   const [solutions, setSolutions] = useState<Solution[]>([]);
 
-  const updateSolutions = () => {
+  const updateSolutions = (): void => {
     get('scoreboard/').then(response => {
         setSolutions(response.data);
     });
   };
 
-  const removeSolution = (id: number) => {
+  const removeSolution = (id: number): void => {
     updateSolutions();
   };
 

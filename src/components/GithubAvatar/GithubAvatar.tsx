@@ -9,11 +9,14 @@ interface PropTypes {
   username: string;
 }
 
+const githubUrl = 'https://github.com/';
+const getUserGithubUrl = (username: string) => githubUrl + username;
+
 const GithubAvatar: React.FC<PropTypes> = ({ username }) => {
   if (username === 'anonymous') return <Avatar/>;
 
-  const githubUrl = `https://github.com/${username}`;
-  const avatarUrl = githubUrl + '.png';
+  const userGithubUrl = getUserGithubUrl(username);
+  const avatarUrl = userGithubUrl + '.png';
   const usernameTokens = username.split(/[ ,.\-_#@;]/g);
   const altText = (
     (usernameTokens.length > 1)?
@@ -23,7 +26,7 @@ const GithubAvatar: React.FC<PropTypes> = ({ username }) => {
   ).toUpperCase()
 
   return (
-    <Link href={githubUrl}>
+    <Link href={userGithubUrl}>
       <Avatar>
         <img src={avatarUrl} alt={altText} />
       </Avatar>
@@ -31,5 +34,6 @@ const GithubAvatar: React.FC<PropTypes> = ({ username }) => {
   )
 };
 
+export { getUserGithubUrl };
 export default GithubAvatar;
 

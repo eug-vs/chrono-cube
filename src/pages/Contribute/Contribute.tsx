@@ -15,7 +15,7 @@ import BugReportIcon from '@material-ui/icons/BugReport';
 import NewReleasesIcon from '@material-ui/icons/NewReleases';
 
 import { Window, ContentSection } from 'react-benzin';
-import GithubAvatar from '../../components/GithubAvatar/GithubAvatar';
+import GithubAvatar, { getUserGithubUrl } from '../../components/GithubAvatar/GithubAvatar';
 
 import developers from '../../developers.json';
 
@@ -116,7 +116,7 @@ const Contribute: React.FC = () => {
                   <ListItem>
                     <GithubAvatar username={developer.username} />
                     <div>
-                      <Link href="#">{developer.username}</Link>
+                      <Link href={getUserGithubUrl(developer.username)}>{developer.username}</Link>
                       <Typography component="div" color="textSecondary">
                         {developer.role}
                       </Typography>

@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.js": "/chrono-cube/static/js/main.705ad471.chunk.js",
-    "main.js.map": "/chrono-cube/static/js/main.705ad471.chunk.js.map",
+    "main.js": "/chrono-cube/static/js/main.e4290f18.chunk.js",
+    "main.js.map": "/chrono-cube/static/js/main.e4290f18.chunk.js.map",
     "runtime-main.js": "/chrono-cube/static/js/runtime-main.b9758b07.js",
     "runtime-main.js.map": "/chrono-cube/static/js/runtime-main.b9758b07.js.map",
     "static/css/2.96d5bacd.chunk.css": "/chrono-cube/static/css/2.96d5bacd.chunk.css",
-    "static/js/2.1fb18375.chunk.js": "/chrono-cube/static/js/2.1fb18375.chunk.js",
-    "static/js/2.1fb18375.chunk.js.map": "/chrono-cube/static/js/2.1fb18375.chunk.js.map",
+    "static/js/2.69cefa76.chunk.js": "/chrono-cube/static/js/2.69cefa76.chunk.js",
+    "static/js/2.69cefa76.chunk.js.map": "/chrono-cube/static/js/2.69cefa76.chunk.js.map",
     "index.html": "/chrono-cube/index.html",
-    "precache-manifest.494c69f8266653e96b6e2f5b4d37cf7e.js": "/chrono-cube/precache-manifest.494c69f8266653e96b6e2f5b4d37cf7e.js",
+    "precache-manifest.4f2a8d61d4020272d8aa6a08e6c362ec.js": "/chrono-cube/precache-manifest.4f2a8d61d4020272d8aa6a08e6c362ec.js",
     "service-worker.js": "/chrono-cube/service-worker.js",
     "static/css/2.96d5bacd.chunk.css.map": "/chrono-cube/static/css/2.96d5bacd.chunk.css.map",
-    "static/js/2.1fb18375.chunk.js.LICENSE.txt": "/chrono-cube/static/js/2.1fb18375.chunk.js.LICENSE.txt",
+    "static/js/2.69cefa76.chunk.js.LICENSE.txt": "/chrono-cube/static/js/2.69cefa76.chunk.js.LICENSE.txt",
     "static/media/index.css": "/chrono-cube/static/media/roboto-latin-900italic.ebf6d164.woff2"
   },
   "entrypoints": [
     "static/js/runtime-main.b9758b07.js",
     "static/css/2.96d5bacd.chunk.css",
-    "static/js/2.1fb18375.chunk.js",
-    "static/js/main.705ad471.chunk.js"
+    "static/js/2.69cefa76.chunk.js",
+    "static/js/main.e4290f18.chunk.js"
   ]
 }

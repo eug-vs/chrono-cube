@@ -39,7 +39,7 @@ const Profile: React.FC<PropTypes> = ({ user, setUser }) => {
 
   const [profileSolutions, setProfileSolutions] = useState<Solution[]>([]);
 
-  const handleLogout = () => {
+  const handleLogout = (): void => {
     setUser({ username: 'anonymous', id: null });
     localStorage.clear();
   };

@@ -30,7 +30,7 @@ const Registration: React.FC<PropTypes> = ({ setUser }) => {
     setIsRememberMe(event.target.checked);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (): void => {
     if (username !== '') {
       post('users/', { username })
         .then(response => {

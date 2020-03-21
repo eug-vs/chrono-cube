@@ -12,13 +12,21 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const TimerButton = ({ registerResult }) => {
+
+interface PropTypes {
+  registerResult: (result: string) => void;
+}
+
+type Mode = 'idle' | 'countdown' | 'running' | 'over';
+
+
+const TimerButton: React.FC<PropTypes> = ({ registerResult }) => {
   const classes = useStyles();
 
   const SPACE = 32;
   const maxCountdown = 15000;
-  const [time, setTime] = useState('00:00:00');
-  const [mode, setMode] = useState('idle');
+  const [time, setTime] = useState<string>('00:00:00');
+  const [mode, setMode] = useState<Mode>('idle');
 
   useEffect(()=> {
     const timestamp = Date.now();
@@ -29,14 +37,14 @@ const TimerButton = ({ registerResult }) => {
         if (timeDelta <= 0) setMode('over');
         setTime(convertTimeToString(timeDelta));
       }, 10);
-      return () => clearInterval(repeater);
+      return (): void => clearInterval(repeater);
     }
 
     if (mode === 'running') {
       const repeater = setInterval(() => {
         setTime(convertTimeToString(Date.now() - timestamp));
       }, 10);
-      return () => clearInterval(repeater);
+      return (): void => clearInterval(repeater);
     }
 
     if (mode === 'over') {
@@ -44,12 +52,12 @@ const TimerButton = ({ registerResult }) => {
     }
   }, [mode]);
 
-  const handleKeyPress = event => {
+  const handleKeyPress = (event: KeyboardEvent): void => {
     event.preventDefault();
     if (event.keyCode === SPACE && mode === 'idle' ) setMode('countdown');
   };
 
-  const handleKeyUp = event => {
+  const handleKeyUp = (event: KeyboardEvent): void => {
     if (event.keyCode === SPACE) {
       if (mode === 'running') {
         registerResult(time);
@@ -66,13 +74,13 @@ const TimerButton = ({ registerResult }) => {
     window.addEventListener('keyup', handleKeyUp);
     window.addEventListener('keypress', handleKeyPress);
 
-    return () => {
+    return (): void => {
       window.removeEventListener('keyup', handleKeyUp);
       window.removeEventListener('keypress', handleKeyPress);
     };
   });
 
-  const composeHelperText = () => {
+  const composeHelperText = (): string => {
     switch (mode) {
       case 'running': return 'Go fast!';
       case 'countdown': return 'Release SPACE to begin';
@@ -81,7 +89,7 @@ const TimerButton = ({ registerResult }) => {
     }
   };
 
-  const helperColor = () => {
+  const helperColor = (): 'primary' | 'secondary' | 'textSecondary' => {
     switch (mode) {
       case 'running': return 'primary';
       case 'over': return 'secondary';
@@ -99,7 +107,7 @@ const TimerButton = ({ registerResult }) => {
   );
 };
 
-const convertTimeToString = timeDelta => {
+const convertTimeToString = (timeDelta: number): string => {
   let resultTime = '';
 
   const minute = Math.floor(timeDelta / 60000);

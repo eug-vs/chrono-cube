@@ -4,16 +4,18 @@
   "private": true,
   "homepage": "https://eug-vs.github.io/chrono-cube",
   "dependencies": {
-    "@material-ui/core": "^4.9.1",
+    "@material-ui/core": "^4.9.7",
     "@material-ui/icons": "^4.9.1",
     "axios": "^0.19.2",
-    "react": "^16.12.0",
-    "react-benzin": "^1.0.1",
-    "react-dom": "^16.12.0",
-    "react-scripts": "3.3.1"
+    "react": "^16.13.1",
+    "react-benzin": "^3.0.0",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
+    "lint": "eslint . --ext ts,tsx --max-warnings 0",
+    "test": "npm run lint && tsc",
     "build": "react-scripts build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
@@ -31,16 +33,17 @@
     ]
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^2.19.0",
-    "@typescript-eslint/parser": "^2.19.0",
-    "babel-eslint": "^10.0.3",
+    "@types/react-dom": "^16.9.5",
+    "@typescript-eslint/eslint-plugin": "^2.24.0",
+    "@typescript-eslint/parser": "^2.24.0",
+    "babel-eslint": "^10.1.0",
     "eslint": "^6.8.0",
-    "eslint-config-react-app": "^5.2.0",
-    "eslint-plugin-flowtype": "^3.13.0",
+    "eslint-config-react-app": "^5.2.1",
+    "eslint-plugin-flowtype": "^4.6.0",
     "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-react": "^7.18.3",
-    "eslint-plugin-react-hooks": "^1.7.0",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^2.5.1",
     "gh-pages": "^2.2.0",
-    "typescript": "^3.7.5"
+    "typescript": "^3.8.3"
   }
 }

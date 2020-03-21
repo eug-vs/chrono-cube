@@ -17,6 +17,7 @@ import NewReleasesIcon from '@material-ui/icons/NewReleases';
 
 import { Window, ContentSection } from 'react-benzin';
 
+import developers from '../../developers.json';
 
 const useStyles = makeStyles(theme => ({
   mono: {
@@ -31,10 +32,9 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-const developers = require('../../developers.json');
 
 
-const Contribute = () => {
+const Contribute: React.FC = () => {
   const classes = useStyles();
 
   return (

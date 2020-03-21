@@ -24,6 +24,6 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run:
-          name: Test code syntax with eslint
-          command: npx eslint .
+          name: Check types and lint code
+          command: npm test
 

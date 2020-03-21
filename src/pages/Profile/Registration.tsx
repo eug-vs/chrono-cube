@@ -7,25 +7,30 @@ import {
   FormControlLabel,
   Grid,
 } from '@material-ui/core';
+import { User } from '../../types';
 
 import { ContentSection } from 'react-benzin';
-import { get, post } from '../../../requests';
+import { get, post } from '../../requests';
 
 
-const Registration = ({ setUser }) => {
+interface PropTypes {
+  setUser: (user: User) => void;
+}
 
-  const [username, setUsername] = useState('');
-  const [isRememberMe, setIsRememberMe] = useState(false);
+const Registration: React.FC<PropTypes> = ({ setUser }) => {
 
-  const handleChange = (event) => {
+  const [username, setUsername] = useState<string>('');
+  const [isRememberMe, setIsRememberMe] = useState<boolean>(false);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setUsername(event.target.value);
   };
 
-  const handleCheck = (event) => {
+  const handleCheck = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setIsRememberMe(event.target.checked);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (): void => {
     if (username !== '') {
       post('users/', { username })
         .then(response => {
@@ -37,7 +42,7 @@ const Registration = ({ setUser }) => {
         })
         .catch(err => {
           get('users/').then(response => {
-            const user = response.data.filter(user => user.username === username)[0];
+            const user = response.data.filter((user: User) => user.username === username)[0];
             setUser(user);
             if (isRememberMe) {
               localStorage.setItem('userId', user.id);

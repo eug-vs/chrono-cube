@@ -11,6 +11,7 @@ import {
   Menu,
   MenuItem,
 } from '@material-ui/core';
+import { Solution } from '../../types';
 
 import { makeStyles } from '@material-ui/core/styles';
 import TimerIcon from '@material-ui/icons/Timer';
@@ -44,22 +45,29 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const SolutionCard = ({ data, removeThisCard }) => {
+
+interface PropTypes {
+  data: Solution;
+  removeThisCard: (id: number) => void;
+}
+
+
+const SolutionCard: React.FC<PropTypes> = ({ data, removeThisCard }) => {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
   const author = data.author? data.author.username : 'anonymous';
   const date = new Date(data.date);
 
-  const handleOpenMenu = event => {
+  const handleOpenMenu = (event: React.MouseEvent<HTMLButtonElement>): void => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = () => {
+  const handleClose = (): void => {
     setAnchorEl(null);
   };
 
-  const handleDelete = () => {
+  const handleDelete = (): void => {
     del(`solutions/${data.id}/`).then(() => {
       removeThisCard(data.id);
     });
@@ -77,11 +85,11 @@ const SolutionCard = ({ data, removeThisCard }) => {
         }
         title={author}
         subheader={date.toLocaleString('default', DATE_FORMAT)}
-        action={(
+        action={
           <IconButton onClick={handleOpenMenu}>
             <MoreVertIcon />
           </IconButton>
-        )}
+        }
       />
       <Menu
         anchorEl={anchorEl}

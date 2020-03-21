@@ -5,6 +5,7 @@ import {
   BenzinThemeProvider,
   Header,
 } from 'react-benzin';
+import { User, Solution } from './types';
 
 import 'typeface-roboto';
 
@@ -21,11 +22,10 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 import { get } from './requests';
 
 
-const App = () => {
-
-  const [page, setPage] = useState('app');
-  const [user, setUser] = useState({ username: 'anonymous', id: null });
-  const [recentSolutions, setRecentSolutions] = useState([]);
+const App: React.FC = () => {
+  const [page, setPage] = useState<string>('app');
+  const [user, setUser] = useState<User>({ username: 'anonymous', id: null });
+  const [recentSolutions, setRecentSolutions] = useState<Solution[]>([]);
 
   const headerContents = {
     app: (<TimerIcon />),
@@ -35,15 +35,15 @@ const App = () => {
   };
 
   useEffect(() => {
-    const userId = +localStorage.getItem('userId');
+    const userId = localStorage.getItem('userId');
     if (userId) {
       get('users/').then(response => {
-        setUser(response.data.filter(user => user.id === +userId)[0]);
+        setUser(response.data.filter((user: User) => user.id === +userId)[0]);
       });
     }
   }, []);
 
-  const Page = ({ page }) => {
+  const Page: React.FC<{ page: string }> = ({ page }) => {
     switch (page) {
       case 'app':
         return (
@@ -73,7 +73,8 @@ const App = () => {
     <BenzinThemeProvider>
       <Header
         logo={{
-          title: 'ChronoCube'
+          title: 'ChronoCube',
+          icon: null
         }}
         contents={headerContents}
         page={page}

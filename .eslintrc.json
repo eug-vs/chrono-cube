@@ -1,5 +1,10 @@
 {
-  "extends": "react-app",
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "react-app",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "ignorePatterns": "dist/",
   "rules": {
     "jsx-quotes": ["error", "prefer-double"],
     "quotes": ["error", "single"]
